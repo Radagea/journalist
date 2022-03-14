@@ -62,13 +62,6 @@ export default {
         authors: ['Dries Viaene ','Paul Vermeersch',' Frank Van Den Branden'],
         views: 1,
         published: '23.05.2021'
-      },
-      {
-        id: 6,
-        title: 'Walking the line: balancing performance barriers and facilitators in an augmented reality mobile application for paediatric code cart training',
-        authors: ['Abigail R. Wooldridge ',' Widya A. Ramadhani','  Keith Hanson', ' Elsa Vazquez-Melendez'],
-        views: 1,
-        published: '23.05.2021'
       }
       ]
     };
