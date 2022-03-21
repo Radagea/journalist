@@ -50,49 +50,7 @@ export default {
   data() {
     return {
       searchFor: this.$route.query.main,
-      searchResults: [{
-        id: 1,
-        title: 'Cerebellar and Striatal Implications in Autism Spectrum Disorders: From Clinical Observations to Animal Models',
-        authors: ['Mathieu Thabault','Valentine Turpin','Alexandre Maisterrena','Mohamed Jaber','Matthieu Egloff','Laurie Galvan'],
-        views: 422,
-        published: '27.04.2021'
-      },
-      {
-        id: 2,
-        title: 'Pulmonary oedema after percutaneous ASD-closure',
-        authors: ['Dries Viaene','Paul Vermeersch',' Frank Van Den Branden'],
-        views: 132,
-        published: '23.05.2021'
-      },
-      {
-        id: 3,
-        title: 'Having a Sibling with ASD: Perspectives of Siblings and Their Parents',
-        authors: ['Monica L. Molinaro ','Lauren E. Rollo',' Paula C. Fletcher','Margaret A. Schneider'],
-        views: 12,
-        published: '21.12.2018'
-      },
-      {
-        id: 4,
-        title: 'Pulmonary oedema after percutaneous ASD-closure',
-        authors: ['Dries Viaene ','Paul Vermeersch',' Frank Van Den Branden'],
-        views: 1222,
-        published: '23.05.2021'
-      },
-      {
-        id: 5,
-        title: 'Pulmonary oedema after percutaneous ASD-closure',
-        authors: ['Dries Viaene ','Paul Vermeersch',' Frank Van Den Branden'],
-        views: 1,
-        published: '23.05.2021'
-      },
-      {
-        id: 6,
-        title: 'Walking the line: balancing performance barriers and facilitators in an augmented reality mobile application for paediatric code cart training',
-        authors: ['Abigail R. Wooldridge ',' Widya A. Ramadhani','  Keith Hanson', ' Elsa Vazquez-Melendez'],
-        views: 1,
-        published: '23.05.2021'
-      }
-      ]
+      searchResults: [],
     };
   }
 }

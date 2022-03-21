@@ -45,6 +45,23 @@ export default {
     components: {
         dropDown,
     },
+    created() {
+        fetch(this.$linkToAPI+'categories/read.php').then((response) => {
+            if(response.ok) {
+                return response.json();
+            }
+        }).then((data) => {
+            const results = [];
+            for (const id in data) {
+                results.push({
+                    id: data[id].id,
+                    name: data[id].name,
+                    articleNumber: data[id].articleNumber
+                })
+            }
+            this.categoriesDrpdButtons = results;
+        });
+    },
     methods: {
         makeSelection(emit) {
             this.catSelectedId = emit;
@@ -73,28 +90,7 @@ export default {
             yearTo: null,
             identifierSearch: null,
             onlyOpenaccess: false,
-            categoriesDrpdButtons: [
-                {
-                    id: 1,
-                    name: 'First Category'
-                }, 
-                {
-                    id: 2,
-                    name: 'Second Category'
-                },
-                {
-                    id: 3,
-                    name: 'Lorem Ipsum'
-                },
-                {
-                    id: 4,
-                    name: 'Dolor Sit Amet'
-                },
-                {
-                    id: 4,
-                    name: 'Sit Amet'
-                }
-            ],
+            categoriesDrpdButtons: [],
             typesDrpdButtons: [
                 {
                     id: 1,

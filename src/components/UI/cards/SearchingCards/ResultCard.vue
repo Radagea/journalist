@@ -3,7 +3,7 @@
     <div class="wrapper">
       <h1 @click="navigateToArticlePage(result.id)" >{{ result.title }}</h1>
       <h2>
-        <span v-for="author in result.authors" :key="author" @click="searchAuthor(author)">{{ author.firstname }} {{ author.lastname }}</span>
+        <span v-for="author in result.authors" :key="author.id" @click="searchAuthor(author)">{{ author.firstname }} {{ author.lastname }}</span>
       </h2>
       <div class="row">
         <div class="left">
@@ -14,7 +14,7 @@
         </div>
       </div>
       <div class="readmore">
-        <a @click="asd">Read more...</a>
+        <a @click="navigateToArticlePage(result.id)">Read more...</a>
       </div>
     </div>
   </div>
@@ -25,7 +25,8 @@ export default {
   props: ['result'],
   methods: {
     searchAuthor(authors) {
-      this.$router.push({name: 'Searching', query: {author: authors}});
+      const authorName = authors.firstname+" "+authors.lastname;
+      this.$router.push({name: 'Searching', query: {author: authorName}});
     },
     navigateToArticlePage(ids) {
       this.$router.push({name: 'ArticlePage', params: {id: ids}});
