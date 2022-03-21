@@ -26,12 +26,6 @@ const router = createRouter({
 const app = createApp(App);
 const apilink = 'http://develop.majsys.hu/journalistapi/api/';
 
-
-
-
-
-
-
 app.config.globalProperties.$linkToAPI = apilink;
 app.use(router);
 app.mount('#app');

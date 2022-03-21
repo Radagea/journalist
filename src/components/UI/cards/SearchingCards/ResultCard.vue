@@ -3,7 +3,7 @@
     <div class="wrapper">
       <h1 @click="navigateToArticlePage(result.id)" >{{ result.title }}</h1>
       <h2>
-        <span v-for="author in result.authors" :key="author" @click="searchAuthor(author)">{{ author }}</span>
+        <span v-for="author in result.authors" :key="author" @click="searchAuthor(author)">{{ author.firstname }} {{ author.lastname }}</span>
       </h2>
       <div class="row">
         <div class="left">

@@ -25,6 +25,28 @@ export default {
     SearchNav,
     ResultCard
   },
+  created() {
+    fetch(this.$linkToAPI+'articles/read.php').then((response) => {
+      if(response.ok) {
+        return response.json();
+      }
+    }).then((data) => {
+      const results = [];
+      for (const id in data) {
+        results.push({
+          id: data[id].id,
+          title: data[id].title,
+          abstract: data[id].abstract,
+          authors: data[id].authors,
+          views: data[id].views,
+          published: data[id].publishedtime,
+          type: data[id].type,
+          oa: data[id].oa
+        })
+      }
+      this.searchResults = results;
+    });
+  },
   data() {
     return {
       searchFor: this.$route.query.main,

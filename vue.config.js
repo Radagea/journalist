@@ -1,3 +1,5 @@
 module.exports = {
-    publicPath: ''
+	devServer: {
+		host: 'develop.majsys.hu'
+	}
   }
