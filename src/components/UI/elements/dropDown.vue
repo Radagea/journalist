@@ -1,5 +1,5 @@
 <template>
-    <div class="dropdown" @mouseleave="mouseLeave" :name="name" :drpdButtons="drpdButtons">
+    <div class="dropdown" @mouseleave="mouseLeave" :name="name">
         <button class="dropbtn" @click="buttonPress">{{ SelectedName }}</button>
         <div class="dropdown-content" v-if="buttonPressed">
             <input type="text" placeholder="Search.." class="SearchInput" v-model="searching">
@@ -10,14 +10,52 @@
 
 <script>
 export default {
-    props: ['name', 'drpdButtons'],
+    props: ['name'],
+    created() {
+        if (this.name === "Categories") {
+            fetch(this.$linkToAPI+'categories/read.php').then((response) => {
+                if(response.ok) {
+                    return response.json();
+                }
+            }).then((data) => {
+                const results = [];
+                for (const id in data) {
+                    results.push({
+                        id: data[id].id,
+                        name: data[id].name,
+                        articleNumber: data[id].articleNumber
+                    })
+                }
+                this.drpbs = results;
+                this.dpfilter = results;
+            });
+        }else if (this.name === "Types" || this.name === "Article Type") {
+            fetch(this.$linkToAPI+'types/read.php').then((response) =>{
+                if(response.ok) {
+                    return response.json();
+                }
+            }).then((data) => {
+                const results = [];
+                for (const id in data) {
+                    results.push({
+                        id: data[id].id,
+                        name: data[id].name
+                    })
+                }
+                this.drpbs = results;
+                this.dpfilter = results;
+            });
+        }
+        
+    },
     data() {
         return {
             buttonPressed: false,
             SelectedID: null,
             SelectedName: this.name,
             searching: null,
-            drpbs: this.drpdButtons,
+            drpbs: [],
+            dpfilter: []
         };
     }, 
     methods: {
@@ -29,8 +67,8 @@ export default {
         },
         drpdSelected(id) {
             this.SelectedID = id;
-            const index = this.drpdButtons.findIndex(drpd => drpd.id === id);
-            this.SelectedName = this.drpdButtons[index].name;
+            const index = this.drpbs.findIndex(drpd => drpd.id === id);
+            this.SelectedName = this.drpbs[index].name;
             this.buttonPressed = false;
             this.$emit("selected-id", this.SelectedID);
         }
@@ -38,7 +76,7 @@ export default {
     watch: {
         searching() {
             const upperCaseSearch = this.searching.toLowerCase();
-            this.drpbs = this.drpdButtons.filter((drpbs) => drpbs.name.toLowerCase().includes(upperCaseSearch));
+            this.drpbs = this.dpfilter.filter((drpbs) => drpbs.name.toLowerCase().includes(upperCaseSearch));
         }
     }
 }
