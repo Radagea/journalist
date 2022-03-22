@@ -4,9 +4,9 @@
             <div class="searches">
                 <input class="mainsearch" type="text" id="mainsearch" name="mainsearch" placeholder="Start Searching..." v-model="mainSearch">
                 <input class="authorsearch" type="text" id="authorsearch" name="authorsearch" placeholder="Author, Authors.." v-model="authorSearch">
-                <drop-down :name="cat" class="dropdownmain" :drpdButtons="categoriesDrpdButtons" @selected-id="makeSelection"></drop-down>
+                <drop-down :name="cat" class="dropdownmain" @selected-id="makeSelection"></drop-down>
                 <input class="keywordsearch" type="text" id="keywordsearch" name="keywordsearch" placeholder="Keywords..." v-model="keywordsSearch">
-                <drop-down :name="cat2" class="dropdownmain" :drpdButtons="typesDrpdButtons"  @selected-id="makeSelection2" ></drop-down>
+                <drop-down :name="cat2" class="dropdownmain" @selected-id="makeSelection2" ></drop-down>
             </div>
             <div class="buttondiv">
                 <button @click="StartSearching">Search</button>
@@ -17,9 +17,9 @@
             <div class="msearches">
                 <input class="mmainsearch" type="text" name="mainsearch" placeholder="Start Searching...">
                 <input class="mauthorsearch" type="text" name="authorsearch" placeholder="Author, Authors..">
-                <drop-down :name="cat" class="mdropdown" :drpdButtons="categoriesDrpdButtons" @selected-id="makeSelection"></drop-down>
+                <drop-down :name="cat" class="mdropdown" @selected-id="makeSelection"></drop-down>
                 <input class="mkeywordsearch" type="text" name="keywordsearch" placeholder="Keywords...">
-                <drop-down :name="cat2" class="mdropdown" :drpdButtons="typesDrpdButtons" @selected-id="makeSelection2"></drop-down>
+                <drop-down :name="cat2" class="mdropdown" @selected-id="makeSelection2"></drop-down>
             </div>
             <div class="mbuttondiv">
                 <button @click="StartSearching">Search</button>
@@ -59,38 +59,6 @@ export default {
             mainSearch: null,
             authorSearch: null,
             keywordsSearch: null,
-            categoriesDrpdButtons: [
-                {
-                    id: 1,
-                    name: 'First Category'
-                }, 
-                {
-                    id: 2,
-                    name: 'Second Category'
-                },
-                {
-                    id: 3,
-                    name: 'Lorem Ipsum'
-                },
-                {
-                    id: 4,
-                    name: 'Dolor Sit Amet'
-                },
-                {
-                    id: 4,
-                    name: 'Sit Amet'
-                }
-            ],
-            typesDrpdButtons: [
-                {
-                    id: 1,
-                    name: 'FirstTypes'
-                },
-                {
-                    id: 2,
-                    name: 'SecondTypes'
-                }
-            ]
         };
     }
 }

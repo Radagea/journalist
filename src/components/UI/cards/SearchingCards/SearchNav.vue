@@ -27,10 +27,10 @@
                 <input id="openaccess" name="openaccess" type="checkbox" v-model="onlyOpenaccess">
             </div>
             <div class="form-control">
-              <drop-down :name="cat" class="dropdown" :drpdButtons="categoriesDrpdButtons" @selected-id="makeSelection"></drop-down>
+              <drop-down :name="cat" class="dropdown" @selected-id="makeSelection"></drop-down>
             </div>
             <div class="form-control">
-              <drop-down :name="cat2" class="dropdown" :drpdButtons="typesDrpdButtons" @selected-id="makeSelection2"></drop-down>
+              <drop-down :name="cat2" class="dropdown" @selected-id="makeSelection2"></drop-down>
             </div>
             <div class="form-control">
                 <button @click="StartSearching">Search</button>
@@ -44,23 +44,6 @@ import dropDown from '../../elements/dropDown.vue';
 export default {
     components: {
         dropDown,
-    },
-    created() {
-        fetch(this.$linkToAPI+'categories/read.php').then((response) => {
-            if(response.ok) {
-                return response.json();
-            }
-        }).then((data) => {
-            const results = [];
-            for (const id in data) {
-                results.push({
-                    id: data[id].id,
-                    name: data[id].name,
-                    articleNumber: data[id].articleNumber
-                })
-            }
-            this.categoriesDrpdButtons = results;
-        });
     },
     methods: {
         makeSelection(emit) {
@@ -90,17 +73,6 @@ export default {
             yearTo: null,
             identifierSearch: null,
             onlyOpenaccess: false,
-            categoriesDrpdButtons: [],
-            typesDrpdButtons: [
-                {
-                    id: 1,
-                    name: 'FirstTypes'
-                },
-                {
-                    id: 2,
-                    name: 'SecondTypes'
-                }
-            ]
         };
     }
 }
