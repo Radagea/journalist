@@ -59,7 +59,9 @@ export default {
         border-top: 20px solid #783741;
     }
     .wrapper {
-        margin: 0 auto;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 35px;
         width: 90%;
         max-width: 1400px;
         color: white;
@@ -120,8 +122,7 @@ export default {
         width: 18%;
     }
     .articledatas p {
-        padding-bottom: 5px;
-        border-bottom: 1px solid grey;
+        padding-bottom: 15px;
     }
 
     @media(max-width: 500px) {
