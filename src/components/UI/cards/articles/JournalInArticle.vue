@@ -10,7 +10,7 @@
             <div class="searcher">
                 <div class="wrap">
                     <input class="mainsearch" type="text" id="mainsearch" name="mainsearch" placeholder="Start Searching..." v-model="mainSearch">
-                    <button class="searchButton">Search</button>
+                    <button class="searchButton" @click="StartSearching">Search</button>
                 </div>
             </div>
         </div>
@@ -23,6 +23,14 @@ export default {
         return {
             mainSearch: '',
         };
+    },
+    methods: {
+        StartSearching() {
+            this.$router.push({
+                name: 'Searching',
+                query: {main: this.mainSearch}
+            });
+        }
     }
 }
 </script>

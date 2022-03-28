@@ -5,17 +5,14 @@
             <div class="articletitle">
                 <h1>Walking the line: balancing performance barriers and facilitators in an augmented reality mobile application for paediatric code cart training</h1>
                 <h2>
-                    <span>Abigail R. Wooldridge</span>
-                    <span>Widya A. Ramadhani</span>
-                    <span>Keith Hanson</span>
-                    <span>Elsa Vazquez-Melendez</span>
+                    <span v-for="author in authors" :key="author.id" @click="searchAuthor(author)">
+                        {{author.firstName}} {{author.lastName}}
+                    </span>
                 </h2>
                 <h3>
-                    <span>Augmented reality</span>
-                    <span>paediatric resuscitation</span>
-                    <span>code carts</span>
-                    <span>sociotechnical system design</span>
-                    <span>work system analysis</span>
+                    <span v-for="keyword in keywords" :key="keyword.id" @click="searchKeyword(keyword)">
+                        {{keyword.keyword}}
+                    </span>
                 </h3>
                 <nav>
                     <ul>
@@ -39,7 +36,72 @@
 
 <script>
 export default {
+    data() {
+        return {
+            authors: [
+                {
+                    id: 1,
+                    firstName: 'Abigail R.',
+                    lastName: 'Wooldridge'
+                },
+                {
+                    id: 2,
+                    firstName: 'Widya A.',
+                    lastName: 'Ramadhani'
+                },
+                {
+                    id: 3,
+                    firstName: 'Keith',
+                    lastName: 'Hanson'
+                },
+                {
+                    id: 4,
+                    firstName: 'Elsa',
+                    lastName: 'Vazquez-Melendez'
+                },
+                {
+                    id: 5,
+                    firstName: 'Gréta',
+                    lastName: 'Tardos'
+                }
+            ],
+            keywords: [
+                {
+                    id: 1,
+                    keyword: 'Augmented reality',
+                },
+                {
+                    id: 2,
+                    keyword: 'paediatric resuscitation'
+                },
+                {
+                    id: 3,
+                    keyword: 'code carts'
+                },
+                {
+                    id: 4,
+                    keyword: 'sociotechnical system design'
+                },
+                {
+                    id: 5,
+                    keyword: 'work system analysis'
+                }
+            ]
+        };
+    },
+    methods: {
+        searchAuthor(authors) {
+            const authorName = authors.firstName+" "+authors.lastName;
+            this.$router.push({name: 'Searching', query: {author: authorName}});
+        },
+        searchKeyword(keyword) {
+            this.$router.push({
+                name: 'Searching',
+                query: {keywords: keyword.keyword}
+            });
 
+        }
+    }
 }
 </script>
 

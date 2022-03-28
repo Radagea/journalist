@@ -8,7 +8,18 @@
                 <p><span class="bold">Practitioner summary: </span>Augmented reality (AR) may prepare workers for situations that do not occur frequently. This study investigates barriers and facilitators to using an AR mobile smartphone application developed to improve clinician knowledge about code carts, leading to improvements to the application and principles to guide the design of other AR-based technologies.</p>
             </div>
             <div class="right">
-                <h1>Similar articles</h1>
+                <ul>
+                    <h1>Similar articles:</h1>
+                    <li>
+                        <h2>Pulmonary oedema after percutaneous ASD-closure</h2>
+                    </li>
+                    <li>
+                        <h2>Functioning and participation of young adults with ASD in higher education according to the ICF framework</h2>
+                    </li>
+                    <li>
+                        <h2>Functioning and participation of young adults with ASD in higher education according to the ICF framework</h2>
+                    </li>
+                </ul>
             </div>
         </div>
     </main>
@@ -28,8 +39,8 @@ export default {
 <style scoped>
     main {
         width: 100%;
-        height: 50rem;
         background-color: white;
+        overflow: hidden;
     }
     .wrapper {
         width: 90%;
@@ -58,5 +69,36 @@ export default {
         margin-left: 5%;
         text-align: center;
         float: left;
+    }
+    .right h1 {
+        font-size: 1.5em;
+        margin-bottom: 25px;
+        color: white;
+    }
+    .right h2 {
+        font-size: 1.2em;
+    }
+    .right ul {
+        list-style: none;
+        background-color: #B67E86;
+        padding: 10px;
+        border-radius: 15px;
+    }
+    .right ul li {
+        display: block;
+        padding: 10px;
+        margin-bottom: 1.8rem;
+        background-color: #FEEEEE;
+        color: #783741;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    .right ul li:last-child {
+        margin-bottom: 0;
+    }
+    .right ul li:hover {
+        color: white;
+        background-color: #783741;
     }
 </style>
