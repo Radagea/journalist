@@ -5,11 +5,11 @@
                 <img src="/images/nophoto.jpg" alt="Journal main Picture">
                 <h1>Acta Cardiologica</h1>
                 <p>Articles number: 231</p>
-                <a href="#">Journal page</a>
+                <a>Journal page</a>
             </div>
             <div class="searcher">
                 <div class="wrap">
-                    <input class="mainsearch" type="text" id="mainsearch" name="mainsearch" placeholder="Start Searching..." v-model="mainSearch">
+                    <input class="mainsearch" type="text" name="mainsearch" placeholder="Start Searching..." v-model="mainSearch">
                     <button class="searchButton" @click="StartSearching">Search</button>
                 </div>
             </div>

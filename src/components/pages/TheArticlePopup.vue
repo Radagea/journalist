@@ -10,7 +10,7 @@
         </header>
         <section>
           <article-authors :authors="articleData.authors" @close="$emit('close')"></article-authors>
-          <the-abstract :abstract="articleData.abstract" :keywords="articleData.keywords" :views="articleData.views" @close="$emit('close')"></the-abstract>
+          <the-abstract :articleid="articleData.id" :abstract="articleData.abstract" :keywords="articleData.keywords" :views="articleData.views" @close="$emit('close')"></the-abstract>
         </section>
       </dialog>
     </transition>

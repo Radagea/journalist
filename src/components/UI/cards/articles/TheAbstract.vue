@@ -12,7 +12,7 @@
             </ul>
         </div>
         <div class="button">
-            <button >Article page</button>
+            <button @click="navigateInto(articleid)">Article page</button>
         </div>
     </div>
     <div class="sidemenu">
@@ -26,12 +26,12 @@
 
 <script>
 export default {
-    props: ["abstract","keywords","views"],
+    props: ["abstract","keywords","views","articleid"],
     emits: ["close"],
     methods: {
-        navigateInto(ids) {
+        navigateInto(id) {
             this.$emit('close');
-            this.$router.push({name: 'ArticlePage', params: {id: ids} });
+            this.$router.push({name: 'ArticlePage', params: {id: id} });
         },
         searchKeyword(keyword) {
             this.$emit('close');

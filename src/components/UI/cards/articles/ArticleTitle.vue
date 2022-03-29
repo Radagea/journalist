@@ -92,7 +92,8 @@ export default {
     methods: {
         searchAuthor(authors) {
             const authorName = authors.firstName+" "+authors.lastName;
-            this.$router.push({name: 'Searching', query: {author: authorName}});
+            this.$router.push({name: 'Searching',
+            query: {author: authorName}});
         },
         searchKeyword(keyword) {
             this.$router.push({

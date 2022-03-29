@@ -1,7 +1,7 @@
 <template>
     <journal-in-article></journal-in-article>
     <article-title></article-title>
-    <main>
+    <section class="fo">
         <div class="wrapper">
             <div class="main">
                 <p>An augmented reality (AR) mobile smartphone application was developed for clinicians to improve their knowledge about the contents and organisation of a standardised paediatric code cart, an important tool in safe, effective paediatric resuscitations. This study used focus groups and interviews with 22 clinicians to identify work system barriers and facilitators to use of the application. We identified twelve dimensions of barriers and facilitators: convenience, device ownership, device size and type, gamification, interface design, movement/physical space, perception of others, spatial presence, technological experience, technological glitches, workload, and the perception and attitude towards code cart and resuscitation. These dimensions can guide improvement efforts, e.g. redesigning the interface, providing non-AR modes, improving the tutorial. We propose nine principles to guide the design of other digital health technologies incorporating AR. In particular, the workload demands created by using AR must be considered and accounted for in the design and implementation of such technologies.</p>
@@ -22,7 +22,7 @@
                 </ul>
             </div>
         </div>
-    </main>
+    </section>
 </template>
 
 <script>
@@ -32,12 +32,13 @@ export default {
     components: {
         JournalInArticle,
         ArticleTitle
-    }
+    },
+    emits: ["openArticlesPopup"],
 }
 </script>
 
 <style scoped>
-    main {
+    section.fo {
         width: 100%;
         background-color: white;
         overflow: hidden;

@@ -13,7 +13,7 @@ const router = createRouter({
     routes: [
         {name: 'Main', path: '/', component: MainPage},
         {name: 'Searching', path: '/search', component: SearchingPage, props: true},
-        {name: 'ArticlePage', path: '/article/:id', component: MainArticlePage, props: true},
+        {name: 'ArticlePage', path: '/article/:id', component: MainArticlePage},
         {path: '/:notFound(.*)', component: NotFound}
     ],
     linkActiveClass: 'active',
