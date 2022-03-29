@@ -36,7 +36,6 @@ export default {
         results.push({
           id: data[id].id,
           title: data[id].title,
-          abstract: data[id].abstract,
           authors: data[id].authors,
           views: data[id].views,
           published: data[id].publishedtime,

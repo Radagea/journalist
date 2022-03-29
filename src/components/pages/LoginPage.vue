@@ -122,6 +122,7 @@ div.forgot {
     display: block;
     max-width: 100%;
     width: 100%;
+    height: 1.5rem;
     font: inherit;
     padding: 0.15rem;
     border: 1px solid #ccc;
