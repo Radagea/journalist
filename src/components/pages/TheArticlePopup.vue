@@ -13,7 +13,7 @@
         </header>
         <section>
           <article-authors :authors="article.authors" @close="$emit('close')"></article-authors>
-          <the-abstract :abstract="article.abstract" :keywords="article.keywords" :views="article.views" @close="$emit('close')" :articleIDs="articleID"></the-abstract>
+          <the-abstract :abstract="article.abstract" :keywords="article.keywords" :views="article.views" @close="$emit('close')"></the-abstract>
         </section>
       </dialog>
     </transition>
@@ -32,7 +32,7 @@ export default {
   data() {
     return {
       article: {
-        id: this.articleID,
+        id: 2,
         title: "Esophageal anastomosis",
         authors: ["Y Yuan","K-N Wang","L-Q Chen"],
         abstract: `This review gives an overview of the esophageal anastomosis. The history, various techniques and substitution organs, their advantages and disadvantages, healing mechanism, complications, and actual trend of this essential part of esophageal surgery are described. The history of the esophageal anastomosis extending from the first anastomosis in 1901 to today has undergone more than one century. In the early days, the success rate of the anastomosis was extremely low. As the technology progressed, the anastomosis got significant achievement. Various anastomotic techniques are currently being used. However, controversies exist on the choice of anastomotic method concerning the success rate, postoperative complication and quality of life. How to choose the method, no one can give the best answer. We searched the manuscripts about the esophageal anastomoses in recent years and studied the controversy questions about the anastomosis. Performing an esophageal anastomosis is a technical matter, and suture healing is independent of the patient's biologic situation. Every anastomosis technique has its own merit, but the outcomes were different if it was performed by different surgeons, and we also found that the complication rate of the anastomosis was mainly associated with the surgeons. So the surgeons should learn from their previous experience and others to avoid technical errors.`,
@@ -47,7 +47,7 @@ export default {
     };
   },
   emits: ["close"],
-  props: ["open", "articleID"]
+  props: ["open"]
 };
 </script>
 

@@ -1,14 +1,14 @@
 <template>
     <div class="container">
-        <div @click="$emit('open',randoms.id)" class="card" v-for="randoms in RandomOpenAccess" :key="randoms.id">
-            <h1>{{ randoms.title }}</h1>
+        <div @click="$emit('open',randoms)" class="card" v-for="randoms in RandomOpenAccess" :key="randoms.id">
+            <h1>{{ randoms.journalName}}</h1>
             <div class="cardline"></div>
             <div class="cardimage">
                 <img :src="randoms.img">
             </div>
             <div class="cardlinedown"></div>
             <div class="carddescription">
-                <p>{{ randoms.description }}</p>
+                <p>{{ randoms.title }}</p>
             </div>
         </div>
     </div>
@@ -17,40 +17,33 @@
 <script>
 export default {
     emits: ['open'],
+    created() {
+        fetch(this.$linkToAPI+'articles/oarandomread.php').then((response)=>{
+            if (response.ok) {
+                return response.json();
+            }
+        }).then((data) => {
+            const results = [];
+            for (const id in data) {
+                results.push({
+                    id: data[id].id,
+                    journalName: data[id].journalName,
+                    title: data[id].title,
+                    abstract: data[id].abstract,
+                    views: data[id].views,
+                    authors: data[id].authors,
+                    keywords: data[id].keywords,
+                    publishedtime: data[id].publishedtime,
+                    type: data[id].type,
+                    img: 'images/nophoto.jpg'
+                })
+            }
+            this.RandomOpenAccess = results;
+        });
+    },
     data() {
         return {
-            RandomOpenAccess: [
-                {
-                    id: '1',
-                    title: 'Random Open Access',
-                    description: 'Something important description',
-                    img: 'images/nophoto.jpg'
-                },
-                {
-                    id: '2',
-                    title: 'Random Open Access 2',
-                    description: 'Something important description 2',
-                    img: 'images/nophoto.jpg'
-                },
-                {
-                    id: '3',
-                    title: 'In hac habitasse platea dictumst',
-                    description: 'Aenean ligula nunc, interdum et turpis at, viverra egestas est. Suspendisse vulputate pharetra ipsum.',
-                    img: 'images/nophoto.jpg'
-                },
-                {
-                    id: '4',
-                    title: 'Nulla eu vehicula ex',
-                    description: 'Vivamus faucibus commodo mi, ac tincidunt purus varius non.',
-                    img: 'images/nophoto.jpg'
-                },
-                {
-                    id: '5',
-                    title: 'Lorem ipsum dolor sit amet.',
-                    description: 'Proin sed porta libero, nec maximus libero.',
-                    img: 'images/nophoto.jpg'
-                },
-            ]
+            RandomOpenAccess: []
         };
     }
 }

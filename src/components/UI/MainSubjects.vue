@@ -23,53 +23,26 @@ export default {
             this.$router.push({name: 'Searching', query: {cat: id}});
         }
     },
+    created() {
+        fetch(this.$linkToAPI+'categories/read.php').then((response) => {
+            if(response.ok) {
+                return response.json();
+            }
+        }).then((data) => {
+            const results = [];
+            for (const id in data) {
+                results.push({
+                    id: data[id].id,
+                    name: data[id].name,
+                    articleNumber: data[id].articleNumber
+                })
+            }
+            this.categories = results;
+        });
+    },
     data() {
         return {
-            categories: [{
-                id: 1,
-                name: "Biology & Life Sciences"
-            },
-            {
-                id: 2,
-                name: "Business & Economics"
-            },
-            {
-                id: 3,
-                name: "Chemistry & Materials Science"
-            },
-            {
-                id: 4,
-                name: "Computer Science & Mathematics"
-            },
-            {
-                id: 5,
-                name: "Engineering"
-            },
-            {
-                id: 6,
-                name: "Environmental & Earth Sciences"
-            },
-            {
-                id: 7,
-                name: "Medicine & Pharmacology"
-            },
-            {
-                id: 8,
-                name: "Physical Sciences"
-            },
-            {
-                id: 9,
-                name: "Public Health & Healthcare"
-            },
-            {
-                id: 10,
-                name: "Social Sciences, Arts and Humanities"
-            },
-            {
-                id: 11,
-                name: "Agriculture and Rural Development"
-            }
-            ]
+            categories: [],
         };
     }
 }

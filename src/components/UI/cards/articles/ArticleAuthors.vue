@@ -7,6 +7,7 @@
 <script>
 export default {
     props: ["authors"],
+    emits: ["close"],
     methods: {
       searchAuthor(authors) {
         this.$emit('close');

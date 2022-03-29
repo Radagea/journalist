@@ -2,7 +2,7 @@
   <div :class="[anypopup ? 'blur' : '']" class="simplify">
     <login-page :open="isLoginPopup" @close="LoginClose"></login-page>
     <register-page :open="isRegisterPopup" @close="RegisterClose"></register-page>
-    <the-article-popup :open="isArticlePopup" :articleID="articlePopupID" @close="ArticlesPopupClose"></the-article-popup>
+    <the-article-popup :open="isArticlePopup" @close="ArticlesPopupClose"></the-article-popup>
     <header>
       <main-header @login="LoginOpen" @register="RegisterOpen"></main-header>
     </header>
