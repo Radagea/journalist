@@ -8,7 +8,7 @@
         <div class="keywords">
             <h4>Keywords: </h4>
             <ul>
-                <li v-for="keyword in keywords" :key="keyword">{{ keyword }}</li>
+                <li v-for="keyword in keywords" :key="keyword" @click="searchKeyword(keyword.keyword)">{{ keyword.keyword }}</li>
             </ul>
         </div>
         <div class="button">
@@ -32,7 +32,15 @@ export default {
         navigateInto(ids) {
             this.$emit('close');
             this.$router.push({name: 'ArticlePage', params: {id: ids} });
-            
+        },
+        searchKeyword(keyword) {
+            this.$emit('close');
+            this.$router.push({
+                name: 'Searching',
+                query: {
+                    keywords: keyword
+                }
+            })
         }
     }
 
@@ -66,6 +74,12 @@ export default {
     }
     li {
         display: inline;
+        cursor: pointer;
+        color: #783741;
+        transition: 0.2s;
+    }
+    li:hover {
+        color: #B67E86;
     }
     li+li {
         margin-left: 10px;

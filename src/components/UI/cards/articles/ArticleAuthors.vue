@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <li v-for="author in authors" :key="author" @click="searchAuthor(author)" >{{ author }}</li>
+    <li v-for="author in authors" :key="author" @click="searchAuthor(author)" >{{ author.firstname }} {{ author.lastname }}</li>
   </ul>
 </template>
 
@@ -9,9 +9,9 @@ export default {
     props: ["authors"],
     emits: ["close"],
     methods: {
-      searchAuthor(authors) {
+      searchAuthor(author) {
         this.$emit('close');
-        this.$router.push({name: 'Searching', query: {author: authors}});
+        this.$router.push({name: 'Searching', query: {author: author.firstname+' '+author.lastname}});
       }
     }
 };
