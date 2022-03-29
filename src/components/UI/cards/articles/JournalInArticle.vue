@@ -5,7 +5,7 @@
                 <img src="/images/nophoto.jpg" alt="Journal main Picture">
                 <h1>Acta Cardiologica</h1>
                 <p>Articles number: 231</p>
-                <a>Journal page</a>
+                <a href="#">Journal page</a>
             </div>
             <div class="searcher">
                 <div class="wrap">

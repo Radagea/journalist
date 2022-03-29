@@ -7,7 +7,7 @@
             <h1>Explore our Journals</h1>
             <div class="listwrapper">
                 <ul>
-                    <li v-for="category in categories" :key="category.id"><a @click="searchforCat(category.id)">{{ category.name }}</a></li>
+                    <li v-for="journal in journals" :key="journal.id"><a>{{ journal.name }}</a></li>
                 </ul>
                 <button>More...</button>
             </div>
@@ -18,7 +18,7 @@
 <script>
 export default {
     created() {
-        fetch(this.$linkToAPI+'categories/read.php').then((response) => {
+        fetch(this.$linkToAPI+'journals/read.php').then((response) => {
             if(response.ok) {
                 return response.json();
             }
@@ -27,16 +27,15 @@ export default {
             for (const id in data) {
                 results.push({
                     id: data[id].id,
-                    name: data[id].name,
-                    articleNumber: data[id].articleNumber
+                    name: data[id].name
                 })
             }
-            this.categories = results;
+            this.journals = results;
         });
     },
     data() {
         return {
-            categories: [],
+            journals: [],
         };
     }
 }
