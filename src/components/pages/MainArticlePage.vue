@@ -11,13 +11,13 @@
                 <ul>
                     <h1>Similar articles:</h1>
                     <li>
-                        <h2>Pulmonary oedema after percutaneous ASD-closure</h2>
+                        <h2 @click="goToArticle(1)">Pulmonary oedema after percutaneous ASD-closure</h2>
                     </li>
                     <li>
-                        <h2>Functioning and participation of young adults with ASD in higher education according to the ICF framework</h2>
+                        <h2 @click="goToArticle(2)">Functioning and participation of young adults with ASD in higher education according to the ICF framework</h2>
                     </li>
                     <li>
-                        <h2>Functioning and participation of young adults with ASD in higher education according to the ICF framework</h2>
+                        <h2 @click="goToArticle(3)">Functioning and participation of young adults with ASD in higher education according to the ICF framework</h2>
                     </li>
                 </ul>
             </div>
@@ -34,6 +34,11 @@ export default {
         ArticleTitle
     },
     emits: ["openArticlesPopup"],
+    methods: {
+        goToArticle(id) {
+            this.$router.push({name: 'ArticlePage', params: {id: id}});
+        }
+    }
 }
 </script>
 

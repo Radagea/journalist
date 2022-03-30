@@ -9,7 +9,6 @@
                 <ul>
                     <li v-for="category in categories" :key="category.id"><a @click="searchforCat(category.id)">{{ category.name }}</a></li>
                 </ul>
-                <button>More...</button>
             </div>
         </div>
     </main>
@@ -24,7 +23,7 @@ export default {
         }
     },
     created() {
-        fetch(this.$linkToAPI+'categories/read.php').then((response) => {
+        fetch(this.$linkToAPI+'categories/read.php?limit=12').then((response) => {
             if(response.ok) {
                 return response.json();
             }
@@ -51,7 +50,7 @@ export default {
 <style scoped>
     main {
         width: 100%;
-        background: white;
+        background: #FEEEEE;
     }
     div.arrowclear {
         width: 100%;
@@ -63,13 +62,16 @@ export default {
         height: 0;
         border-left: 50px solid transparent;
         border-right: 50px solid transparent;
-        border-top: 35px solid #FEEEEE;
+        border-top: 35px solid #B67E86;
     }
     div.subjects {
-        margin: 10px auto;
+        margin-top: 10px;
+        margin-right: auto;
+        margin-left: auto;
         width: 95%;
         max-width: 1200px;
         text-align: center;
+        padding-bottom: 10px;
     }
 
     ul{
@@ -81,7 +83,6 @@ export default {
         max-width : 100%;
         z-index: 20;
         list-style: none;
-        background: rgb(255, 255, 255);
         padding: 10px 12px;
     }
     @media(max-width:1100px) {

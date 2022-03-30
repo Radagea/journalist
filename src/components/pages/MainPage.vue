@@ -1,8 +1,8 @@
 <template>
   <main-searcher></main-searcher>
-  <main-subjects></main-subjects>
-  <open-articles @openArticlePopup="openArticlePopup"></open-articles>
   <main-journals></main-journals>
+  <open-articles @openArticlePopup="openArticlePopup"></open-articles>
+  <main-subjects></main-subjects>
   <recent-articles></recent-articles>
 </template>
 

@@ -9,7 +9,7 @@
                 <ul>
                     <li v-for="journal in journals" :key="journal.id"><a>{{ journal.name }}</a></li>
                 </ul>
-                <button>More...</button>
+                <button @click="goToJournalPage()">More...</button>
             </div>
         </div>
     </section>
@@ -37,13 +37,18 @@ export default {
         return {
             journals: [],
         };
+    },
+    methods: {
+        goToJournalPage() {
+            this.$router.push({name: 'Journals'})
+        }
     }
 }
 </script>
 
 <style scoped>
     section {
-        background-color: #FEEEEE;
+        background-color: white;
     }
     div.arrowclear {
         width: 100%;
@@ -55,7 +60,7 @@ export default {
         height: 0;
         border-left: 50px solid transparent;
         border-right: 50px solid transparent;
-        border-top: 35px solid #B67E86;
+        border-top: 35px solid #FEEEEE;
     }
     div.main {
         margin-top: 10px;

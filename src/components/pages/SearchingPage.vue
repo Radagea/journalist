@@ -2,7 +2,7 @@
   <section>
     <div class="container">
       <div class="searchinfo">
-        <h1>Search results for: <span>{{ searchFor }}</span></h1>
+        <h1>Search results for: <span>{{ this.$route.query.main }}</span></h1>
       </div>
       <div class="main">
         <search-nav></search-nav>
@@ -48,7 +48,6 @@ export default {
   },
   data() {
     return {
-      searchFor: this.$route.query.main,
       searchResults: [],
     };
   }
