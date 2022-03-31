@@ -6,16 +6,16 @@
           </div>
           <div class="wrap">
               <ul class="letters">
-                  <li v-for="letter in letters" :key="letter">
-                        <h1>{{ letter }}</h1>
+                  <li v-for="jBl in journalsByLetters" :key="jBl.letter">
+                        <h1>{{ jBl.letter }}</h1>
                         <ul class="journalList">
-                            <li v-for="journal in journalsByLetter(letter)" :key="journal.id">
+                            <li v-for="journal in jBl.journals" :key="journal.id">
                                 <div class="img">
                                     <img :src="imageThos">
                                 </div>
                                 <div class="journalCardContent">
                                     <h2>{{ journal.name }}</h2>
-                                    <p>{{ journal.shortDisc }}</p>
+                                    <p>{{ journal.shortDesc }}</p>
                                 </div>
                                 <div style="clear:both;"></div> 
                             </li>
@@ -30,51 +30,71 @@
 <script>
 export default {
     created() {
-        const result = [];
-        for(let i = "A".charCodeAt(0); i <= "Z".charCodeAt(0); i++) {
-            result.push(String.fromCharCode([i]));
-        }
-        this.letters = result;
+        var journals;
+        fetch(this.$linkToAPI+'journals/read.php').then((response) =>{
+                if(response.ok) {
+                    return response.json();
+                }
+            }).then((data) => {
+                const results = [];
+                for(const id in data) {
+                    results.push({
+                        id: data[id].id,
+                        name: data[id].name,
+                        shortDesc: data[id].shortDesc
+                    })
+                }
+                journals = results;
+                const letterResult = [];
+                for(let i = "A".charCodeAt(0); i <= "Z".charCodeAt(0); i++) {
+                    const helper = {
+                        letter: "",
+                        journals: []
+                    };
+                    helper.letter = String.fromCharCode([i]);
+                    const filteredJournals = journals.filter(function (el) {
+                        return el.name.charAt(0) == helper.letter;
+                    });
+                    helper.journals = filteredJournals;
+                    letterResult.push(helper);
+                }
+                this.journalsByLetters = this.letterHaveJournal(letterResult);
+                this.journalsByLettersFilter = this.letterHaveJournal(letterResult);
+            });
     },
     data() {
         return {
-            letters: [],
+            journalsByLetters: [],
+            journalsByLettersFilter: [],
             imageThos: 'images/nophoto.jpg',
             searching: '',
-            journals: [
-                {
-                    id: 1,
-                    letter: 'A',
-                    name: 'A Journal',
-                    shortDisc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
-                },
-                {
-                    id: 2,
-                    letter: 'A',
-                    name: 'A test journal',
-                    shortDisc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
-                },
-                {
-                    id: 3,
-                    letter: 'S',
-                    name: 'Sustainability',
-                    shortDisc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
-                },
-                {
-                    id: 4,
-                    letter: 'E',
-                    name: 'Electronics',
-                    shortDisc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
-                }
-            ]
         };
     },
-    computed: {
-        journalsByLetter(letter) {
-            const filteredJournals;
-            console.log(filteredJournals);
-            return filteredJournals;
+    methods: {
+        letterHaveJournal(letterResult) {
+            const filteredLetter = [];
+            for (const el of letterResult) {
+                if (el.journals.length > 0) {
+                    filteredLetter.push(el);
+                }
+            }
+            return filteredLetter;
         }
+    },
+    watch: {
+        searching() {
+            const lowerCase = this.searching.toLowerCase();
+            const newArr = this.journalsByLettersFilter.map(createNew);
+
+            function createNew(createNew) {
+                const newJournals = {
+                    letter: createNew.letter,
+                    journals: createNew.journals.filter((obj) => obj.name.toLowerCase().includes(lowerCase))
+                }
+                return newJournals;
+            }
+            this.journalsByLetters = this.letterHaveJournal(newArr);
+        },
     }
 }
 </script>
