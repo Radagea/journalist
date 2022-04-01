@@ -167,6 +167,11 @@ export default {
         margin-right: 15px;
     }
 
+    @media (max-width:1200px) {
+        .articletitle h3 span {
+            margin-bottom: 5px;
+        }
+    }
     .articletitle h3 span:hover {
         color: #e0e0e0;
     }
@@ -218,6 +223,9 @@ export default {
         border-top-right-radius: 10px;
         font-size: 1.2em;
         transition: 0.3s;
+    }
+    ul li+li {
+        margin-left: 5px;
     }
     ul li:hover {
         background-color: #9b6c73;

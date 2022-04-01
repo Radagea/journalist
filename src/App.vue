@@ -95,6 +95,8 @@ body  {
 }
 .simplify {
   transition: all 0.3s;
+  position: relative;
+  min-height: 100vh;
 }
 
 .popup-enter-active {

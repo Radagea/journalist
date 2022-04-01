@@ -174,6 +174,16 @@ export default {
         float: left;
     }
 
+    @media(max-width:830px) {
+        div.img {
+            width: 0%;
+            display: none;
+        }
+        div.journalCardContent {
+            width: 100%;
+        }
+    }
+
 
     div.journalCardContent h2 {
         margin-bottom: 10px;

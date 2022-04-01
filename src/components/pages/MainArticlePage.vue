@@ -107,4 +107,26 @@ export default {
         color: white;
         background-color: #783741;
     }
+
+    @media(max-width:1300px) {
+        .main {
+            font-size: 1.3em;
+        }
+        .right h1 {
+            font-size: 1.3em;
+        }
+        .right h2 {
+            font-size: 1em;
+        }
+    }
+
+    @media(max-width:900px) {
+        .main {
+            width: 100%;
+        }
+        .right {
+            width: 0%;
+            display: none;
+        }
+    }
 </style>
