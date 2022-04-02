@@ -5,7 +5,7 @@
                 <img src="/images/nophoto.jpg" alt="Journal main Picture">
                 <h1>Acta Cardiologica</h1>
                 <p>Articles number: 231</p>
-                <a href="#">Journal page</a>
+                <a :href="'/journals/2'">Journal page</a>
             </div>
             <div class="searcher">
                 <div class="wrap">
@@ -30,7 +30,7 @@ export default {
                 name: 'Searching',
                 query: {main: this.mainSearch}
             });
-        }
+        },
     }
 }
 </script>

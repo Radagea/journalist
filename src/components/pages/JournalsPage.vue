@@ -14,7 +14,7 @@
                                     <img :src="imageThos">
                                 </div>
                                 <div class="journalCardContent">
-                                    <h2>{{ journal.name }}</h2>
+                                    <h2 @click="goToJournalProfile(journal.id)" >{{ journal.name }}</h2>
                                     <p>{{ journal.shortDesc }}</p>
                                 </div>
                                 <div style="clear:both;"></div> 
@@ -79,7 +79,11 @@ export default {
                 }
             }
             return filteredLetter;
+        },
+        goToJournalProfile(id) {
+            this.$router.push({name: 'JournalProfile', params: {id: id}});
         }
+
     },
     watch: {
         searching() {
@@ -102,6 +106,7 @@ export default {
 <style scoped>
     section.main {
         width: 100%;
+        min-height: 80vh;
         background: white;
     }
     div.wrapper {
