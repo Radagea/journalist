@@ -7,7 +7,7 @@
             <h1>Explore our Journals</h1>
             <div class="listwrapper">
                 <ul>
-                    <li v-for="journal in journals" :key="journal.id"  @click="goToJournalProfile(journal.id)"><a>{{ journal.name }}</a></li>
+                    <li v-for="journal in journals" :key="journal.id"><a :href="'/journals/'+journal.id">{{ journal.name }}</a></li>
                 </ul>
                 <button @click="goToJournalPage()">More...</button>
             </div>

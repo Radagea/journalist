@@ -8,7 +8,7 @@
         <search-nav></search-nav>
         <div class="searchresults">
           <div class="column">
-            <result-card v-for="result in searchResults" :key="result.id" :result="result"></result-card>
+            <result-card v-for="result in searchResults" :key="result.id" :result="result" class="anim"></result-card>
           </div>
         </div>
       </div>
@@ -92,6 +92,44 @@ export default {
     margin-top: 25px;
     margin-right: auto;
     margin-left: auto;
+  }
+
+  .anim {
+    -webkit-animation: slit-in-vertical 0.45s ease-out both;
+    animation: slit-in-vertical 0.45s ease-out both;
+  }
+
+  @-webkit-keyframes slit-in-vertical {
+    0% {
+      -webkit-transform: translateZ(-800px) rotateY(90deg);
+              transform: translateZ(-800px) rotateY(90deg);
+      opacity: 0;
+    }
+    54% {
+      -webkit-transform: translateZ(-160px) rotateY(87deg);
+              transform: translateZ(-160px) rotateY(87deg);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: translateZ(0) rotateY(0);
+              transform: translateZ(0) rotateY(0);
+    }
+  }
+  @keyframes slit-in-vertical {
+    0% {
+      -webkit-transform: translateZ(-800px) rotateY(90deg);
+              transform: translateZ(-800px) rotateY(90deg);
+      opacity: 0;
+    }
+    54% {
+      -webkit-transform: translateZ(-160px) rotateY(87deg);
+              transform: translateZ(-160px) rotateY(87deg);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: translateZ(0) rotateY(0);
+              transform: translateZ(0) rotateY(0);
+    }
   }
 
   @media(max-width:1100px) {
