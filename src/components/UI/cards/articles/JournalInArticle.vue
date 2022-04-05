@@ -3,7 +3,7 @@
         <div class="wrapper">
             <div class="journal">
                 <img src="/images/nophoto.jpg" alt="Journal main Picture">
-                <h1>Acta Cardiologica</h1>
+                <h1>{{ journal }}</h1>
                 <p>Articles number: 231</p>
                 <a :href="'/journals/2'">Journal page</a>
             </div>
@@ -19,6 +19,7 @@
 
 <script>
 export default {
+    props: ['journal','journalid'],
     data() {
         return {
             mainSearch: '',

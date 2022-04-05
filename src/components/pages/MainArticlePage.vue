@@ -1,11 +1,10 @@
 <template>
-    <journal-in-article></journal-in-article>
-    <article-title></article-title>
+    <journal-in-article :journal="articleData.journalName" :journalid="articleData.journalid"></journal-in-article>
+    <article-title :articleData="articleData"></article-title>
     <section class="fo">
         <div class="wrapper">
             <div class="main">
-                <p>An augmented reality (AR) mobile smartphone application was developed for clinicians to improve their knowledge about the contents and organisation of a standardised paediatric code cart, an important tool in safe, effective paediatric resuscitations. This study used focus groups and interviews with 22 clinicians to identify work system barriers and facilitators to use of the application. We identified twelve dimensions of barriers and facilitators: convenience, device ownership, device size and type, gamification, interface design, movement/physical space, perception of others, spatial presence, technological experience, technological glitches, workload, and the perception and attitude towards code cart and resuscitation. These dimensions can guide improvement efforts, e.g. redesigning the interface, providing non-AR modes, improving the tutorial. We propose nine principles to guide the design of other digital health technologies incorporating AR. In particular, the workload demands created by using AR must be considered and accounted for in the design and implementation of such technologies.</p>
-                <p><span class="bold">Practitioner summary: </span>Augmented reality (AR) may prepare workers for situations that do not occur frequently. This study investigates barriers and facilitators to using an AR mobile smartphone application developed to improve clinician knowledge about code carts, leading to improvements to the application and principles to guide the design of other AR-based technologies.</p>
+                <p>{{ articleData.abstract }}</p>
             </div>
             <div class="right">
                 <ul>
@@ -29,6 +28,33 @@
 import JournalInArticle from '../UI/cards/articles/JournalInArticle.vue';
 import ArticleTitle from '../UI/cards/articles/ArticleTitle.vue';
 export default {
+    created() {
+        fetch(this.$linkToAPI+'articles/read_one.php?id='+this.$route.params.id).then((response) => {
+            if(response.ok) {
+                return response.json();
+            }
+        }).then((data) => {
+            this.articleData = {
+                id: data.id,
+                title:  data.title,
+                abstract: data.abstract,
+                authors: data.authors,
+                keywords: data.keywords,
+                publishedtime: data.publishedtime,
+                views: data.views,
+                type: data.type,
+                oa: data.oa,
+                journalid: data.journalid,
+                journalName: data.journalName
+            }
+            console.log(this.articleData);
+        });
+    },
+    data() {
+        return {
+            articleData: []
+        };
+    },
     components: {
         JournalInArticle,
         ArticleTitle

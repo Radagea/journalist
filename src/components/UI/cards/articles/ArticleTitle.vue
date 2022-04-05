@@ -3,14 +3,14 @@
         <div class="arrow-down"></div>
         <div class="wrapper">
             <div class="articletitle">
-                <h1>Walking the line: balancing performance barriers and facilitators in an augmented reality mobile application for paediatric code cart training</h1>
+                <h1>{{ articleData.title }}</h1>
                 <h2>
-                    <span v-for="author in authors" :key="author.id" @click="searchAuthor(author)">
-                        {{author.firstName}} {{author.lastName}}
+                    <span v-for="author in articleData.authors" :key="author.id" @click="searchAuthor(author)">
+                        {{author.firstname}} {{author.lastname}}
                     </span>
                 </h2>
                 <h3>
-                    <span v-for="keyword in keywords" :key="keyword.id" @click="searchKeyword(keyword)">
+                    <span v-for="keyword in articleData.keywords" :key="keyword.id" @click="searchKeyword(keyword)">
                         {{keyword.keyword}}
                     </span>
                 </h3>
@@ -23,9 +23,9 @@
                 </nav>
             </div>
             <div class="articledatas">
-                <h1>230</h1>
+                <h1>{{articleData.views}}</h1>
                 <p>Views</p>
-                <h1>2019.12.11</h1>
+                <h1>{{ articleData.publishedtime }}</h1>
                 <p>Published date</p>
                 <h1>2019.11.01</h1>
                 <p>Recived date</p>
@@ -36,59 +36,7 @@
 
 <script>
 export default {
-    data() {
-        return {
-            authors: [
-                {
-                    id: 1,
-                    firstName: 'Abigail R.',
-                    lastName: 'Wooldridge'
-                },
-                {
-                    id: 2,
-                    firstName: 'Widya A.',
-                    lastName: 'Ramadhani'
-                },
-                {
-                    id: 3,
-                    firstName: 'Keith',
-                    lastName: 'Hanson'
-                },
-                {
-                    id: 4,
-                    firstName: 'Elsa',
-                    lastName: 'Vazquez-Melendez'
-                },
-                {
-                    id: 5,
-                    firstName: 'Gréta',
-                    lastName: 'Tardos'
-                }
-            ],
-            keywords: [
-                {
-                    id: 1,
-                    keyword: 'Augmented reality',
-                },
-                {
-                    id: 2,
-                    keyword: 'paediatric resuscitation'
-                },
-                {
-                    id: 3,
-                    keyword: 'code carts'
-                },
-                {
-                    id: 4,
-                    keyword: 'sociotechnical system design'
-                },
-                {
-                    id: 5,
-                    keyword: 'work system analysis'
-                }
-            ]
-        };
-    },
+    props: ['articleData'],
     methods: {
         searchAuthor(authors) {
             const authorName = authors.firstName+" "+authors.lastName;
