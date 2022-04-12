@@ -80,6 +80,12 @@ export default {
     padding: 0;
     border: 0;
 }
+.clear:before,
+.clear:after {
+  content:" ";
+    display: table
+}
+.clear:after { clear: both }
 html {
   scroll-behavior: smooth;
 }
