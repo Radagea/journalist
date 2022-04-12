@@ -5,6 +5,7 @@
               <input type="text" placeholder="You can search here..." v-model="searching">
           </div>
           <div class="wrap">
+              <div v-if="isLoading" class="lds-dual-ring"></div>
               <ul class="letters">
                   <li v-for="jBl in journalsByLetters" :key="jBl.letter">
                         <h1>{{ jBl.letter }}</h1>
@@ -60,6 +61,7 @@ export default {
                 }
                 this.journalsByLetters = this.letterHaveJournal(letterResult);
                 this.journalsByLettersFilter = this.letterHaveJournal(letterResult);
+                this.isLoading = false;
             });
     },
     data() {
@@ -68,6 +70,7 @@ export default {
             journalsByLettersFilter: [],
             imageThos: 'images/nophoto.jpg',
             searching: '',
+            isLoading: true,
         };
     },
     methods: {
@@ -197,5 +200,32 @@ export default {
     }
     div.journalCardContent h2:hover {
         color: #b47d85;
+    }
+
+
+    .lds-dual-ring {
+        display: block;
+        width: 80px;
+        height: 80px;
+        margin: 0 auto;
+    }
+    .lds-dual-ring:after {
+        content: " ";
+        display: block;
+        width: 64px;
+        height: 64px;
+        margin: 8px;
+        border-radius: 50%;
+        border: 6px solid #783741;
+        border-color: #783741 transparent #783741 transparent;
+        animation: lds-dual-ring 1.2s linear infinite;
+        }
+    @keyframes lds-dual-ring {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
     }
 </style>

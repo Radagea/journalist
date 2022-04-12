@@ -4,7 +4,7 @@
             <div class="journal">
                 <img src="/images/nophoto.jpg" alt="Journal main Picture">
                 <h1>{{ journal }}</h1>
-                <p>Articles number: 231</p>
+                <p>Articles number: {{ articleNumber }}</p>
                 <a :href="'/journals/2'">Journal page</a>
             </div>
             <div class="searcher">
@@ -19,7 +19,7 @@
 
 <script>
 export default {
-    props: ['journal','journalid'],
+    props: ['journal','journalid','articleNumber'],
     data() {
         return {
             mainSearch: '',

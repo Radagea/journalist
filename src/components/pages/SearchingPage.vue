@@ -8,7 +8,9 @@
         <search-nav></search-nav>
         <div class="searchresults">
           <div class="column">
-            <result-card v-for="result in searchResults" :key="result.id" :result="result" class="anim"></result-card>
+            <div v-if="isLoading" class="lds-dual-ring">
+            </div>
+            <result-card v-else v-for="result in searchResults" :key="result.id" :result="result" class="anim"></result-card>
           </div>
         </div>
       </div>
@@ -44,11 +46,13 @@ export default {
         })
       }
       this.searchResults = results;
+      this.isLoading = false;
     });
   },
   data() {
     return {
       searchResults: [],
+      isLoading: true
     };
   }
 }
@@ -95,8 +99,8 @@ export default {
   }
 
   .anim {
-    -webkit-animation: slit-in-vertical 0.45s ease-out both;
-    animation: slit-in-vertical 0.45s ease-out both;
+    -webkit-animation: slit-in-vertical 1s ease-out both;
+    animation: slit-in-vertical 1s ease-out both;
   }
 
   @-webkit-keyframes slit-in-vertical {
@@ -105,7 +109,7 @@ export default {
               transform: translateZ(-800px) rotateY(90deg);
       opacity: 0;
     }
-    54% {
+    10% {
       -webkit-transform: translateZ(-160px) rotateY(87deg);
               transform: translateZ(-160px) rotateY(87deg);
       opacity: 1;
@@ -121,7 +125,7 @@ export default {
               transform: translateZ(-800px) rotateY(90deg);
       opacity: 0;
     }
-    54% {
+    10% {
       -webkit-transform: translateZ(-160px) rotateY(87deg);
               transform: translateZ(-160px) rotateY(87deg);
       opacity: 1;
@@ -147,4 +151,31 @@ export default {
       float: none;
     }
   }
+
+
+.lds-dual-ring {
+  display: block;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #783741;
+  border-color: #783741 transparent #783741 transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 </style>

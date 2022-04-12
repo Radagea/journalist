@@ -1,5 +1,5 @@
 <template>
-    <journal-in-article :journal="articleData.journalName" :journalid="articleData.journalid"></journal-in-article>
+    <journal-in-article :journal="articleData.journalName" :journalid="articleData.journalid" :articleNumber="articleData.articleNumber"></journal-in-article>
     <article-title :articleData="articleData"></article-title>
     <section class="fo">
         <div class="wrapper">
@@ -45,7 +45,8 @@ export default {
                 type: data.type,
                 oa: data.oa,
                 journalid: data.journalid,
-                journalName: data.journalName
+                journalName: data.journalName,
+                articleNumber: data.articleNumber
             }
             console.log(this.articleData);
         });
