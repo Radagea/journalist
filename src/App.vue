@@ -92,6 +92,9 @@ html {
 body  {
   font-size: 14px;
 }
+#app {
+  min-height: 100vh;
+}
 .blur {
   -webkit-filter: blur(9px);
   -moz-filter: blur(9px);

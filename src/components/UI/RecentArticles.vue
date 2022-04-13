@@ -126,7 +126,7 @@ export default {
         height: 0;
         border-left: 50px solid transparent;
         border-right: 50px solid transparent;
-        border-top: 35px solid #FEEEEE;
+        border-top: 35px solid #D8E8E8;
     }
     h1 {
         margin-top: 30px;

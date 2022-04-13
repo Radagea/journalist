@@ -113,7 +113,7 @@ export default {
     }
     .right ul {
         list-style: none;
-        background-color: #B67E86;
+        background-color: #5C948C;
         padding: 10px;
         border-radius: 15px;
     }
@@ -121,8 +121,8 @@ export default {
         display: block;
         padding: 10px;
         margin-bottom: 1.8rem;
-        background-color: #FEEEEE;
-        color: #783741;
+        background-color: #D8E8E8;
+        color: #115349;
         border-radius: 10px;
         cursor: pointer;
         transition: 0.3s;
@@ -132,7 +132,7 @@ export default {
     }
     .right ul li:hover {
         color: white;
-        background-color: #783741;
+        background-color: #115349;
     }
 
     @media(max-width:1300px) {

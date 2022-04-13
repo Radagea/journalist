@@ -55,7 +55,7 @@ a { text-decoration:none }
 
 nav {
 	width: 100%;
-	background: #A6737A
+	background: #52857E
 }
 nav .navbar {
 	width: 95%;
@@ -105,7 +105,7 @@ nav .menu-toggle {
 	float: right;
 	padding: 12px;
 	margin: 10px 0;
-	background: #B67E86;
+	background: #5C948C;
 	transition: background-color .5s
 }
 nav .icon-bar {
@@ -137,21 +137,21 @@ nav .menu li a:hover,
 nav .open-submenu:hover ,
 nav .open-submenu.active,
 nav .menu-toggle.active  {
-	background: #783741;
+	background: #115349;
 	transition: background-color .5s
 }
 nav .menu ul ul {
 	z-index: 100;
 	float: none;
 	position: absolute;
-	background: #B67E86
+	background: #5C948C
 }
 nav .menu ul ul li {
 	float: none;
 	border: 0
 }
 nav .menu ul ul a:hover {
-	background: #783741;
+	background: #115349;
 	transition: background-color .3s
 }
 

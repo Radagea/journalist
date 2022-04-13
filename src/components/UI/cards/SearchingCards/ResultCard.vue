@@ -48,17 +48,17 @@ export default {
   margin-left: auto;
 }
 h1 {
-  color: #7F444D;
+  color: #40605d;
   font-size: 28px;
   cursor: pointer;
   padding-top: 15px;
   transition: 0.2s;
 }
 h1:hover {
-  color: #B67E86;
+  color: #5C948C;
 }
 h2 {
-  color: #B67E86;
+  color: #5C948C;
   font-size: 16px;
 }
 h2 span {
@@ -67,7 +67,7 @@ h2 span {
   margin-right: 15px;
 }
 h2 span:hover {
-  color: #7F444D;
+  color: #40605d;
 }
 h3 {
   margin-top: 10px;
@@ -86,11 +86,11 @@ h3 {
   cursor: pointer;
   text-decoration: underline;
   font-size: 15px;
-  color: #7F444D;
+  color: #40605d;
   transition: 0.3s;
 }
 .readmore a:hover {
-  color: #B67E86;
+  color: #5C948C;
 }
 .row {
   display: block;

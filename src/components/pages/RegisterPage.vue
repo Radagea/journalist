@@ -89,7 +89,7 @@ dialog {
 }
 
 header {
-  background-color: #783741;
+  background-color: #115349;
   color: white;
   width: 100%;
   padding: 1rem;
@@ -133,7 +133,7 @@ div.forgot {
     input:focus {
     outline: none;
     border-color: #3a0061;
-    background-color: #FEEEEE;
+    background-color: #D8E8E8;
     }
 
     .form-control {
@@ -142,8 +142,8 @@ div.forgot {
     button {
     padding: 0.75rem 1.5rem;
     font-family: inherit;
-    background-color: #783741;
-    border: 1px solid #783741;
+    background-color: #115349;
+    border: 1px solid #115349;
     color: white;
     cursor: pointer;
     transition: 0.2s;
@@ -152,8 +152,8 @@ div.forgot {
 
     button:hover,
     button:active {
-    background-color: #B67E86;
-    border-color: #B67E86;
+    background-color: #5C948C;
+    border-color: #5C948C;
     }
 
 @media (min-width: 768px) {

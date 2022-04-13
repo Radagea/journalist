@@ -53,7 +53,7 @@ dialog {
   overflow: hidden;
 }
 header {
-  background-color: #783741;
+  background-color: #115349;
   color: white;
   padding: 1rem;
 }

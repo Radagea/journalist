@@ -125,16 +125,16 @@ export default {
         width: calc(100% - 2px);
         padding-bottom: 1rem;
         padding-top: 1rem;
-        border: 2px solid #b67e86;
+        border: 2px solid #5C948C;
         border-radius: 4px;
     }
     
     .searchField input:focus {
         outline: none !important;
-        border: 2px solid #783741;
+        border: 2px solid #115349;
     }
     .wrap {
-        background-color: #feeeee;
+        background-color: #D8E8E8;
         border-radius: 5px;
         padding: 1rem;
     }
@@ -142,7 +142,7 @@ export default {
         list-style: none;
     }
     ul.letters li h1 {
-        color: #783741;
+        color: #115349;
         font-size: 2em;
         border-bottom: 1px solid #B47D85;
         padding-left: 20px;
@@ -160,7 +160,7 @@ export default {
         display: block;
         margin-bottom: 20px;
         margin-top: 20px;
-        color: #783741;
+        color: #115349;
         background-color: white;
         padding-top: 25px;
         padding-bottom: 25px;
@@ -216,8 +216,8 @@ export default {
         height: 64px;
         margin: 8px;
         border-radius: 50%;
-        border: 6px solid #783741;
-        border-color: #783741 transparent #783741 transparent;
+        border: 6px solid #115349;
+        border-color: #115349 transparent #115349 transparent;
         animation: lds-dual-ring 1.2s linear infinite;
         }
     @keyframes lds-dual-ring {

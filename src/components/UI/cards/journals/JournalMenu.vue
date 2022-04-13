@@ -25,7 +25,7 @@ export default {
     .clear:after { clear: both }
     nav {
         width: 100%;
-        background-color: #a6737a;
+        background-color: #52857E;
     }
     nav .wrap {
         width: 95%;
@@ -47,7 +47,7 @@ export default {
         transition: 0.2s
     }
     nav .wrap ul li:hover {
-        background-color: #783741;
+        background-color: #115349;
     }
     nav .wrap ul li:hover a {
         color: white;

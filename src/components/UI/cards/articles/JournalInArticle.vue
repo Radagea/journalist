@@ -40,7 +40,7 @@ export default {
     header {
         width: 100%;
         height: 10rem;
-        background-color: #783741;
+        background-color: #115349;
         padding-top: 10px;
         padding-bottom: 10px;
     }
@@ -72,14 +72,14 @@ export default {
         position: absolute;
         text-decoration: none;
         padding: 10px;
-        background-color: #b1626d;
+        background-color: #37867c;
         color: white;
         bottom: 0;
         border-radius: 10px;
         transition: 0.2s;
     }
     .journal a:hover {
-        background-color: #96646b;
+        background-color: #4a7a73;
     }
 
     .searcher {
@@ -104,12 +104,12 @@ export default {
         cursor: pointer;
         width: 10%;
         height: 3rem;
-        background-color: #b1626d;
+        background-color: #37867c;
         border-radius: 10px;
         transition: 0.2s;
     }
     button:hover {
-        background-color: #96646b;
+        background-color: #4a7a73;
     }
     input:focus,
     input:hover {

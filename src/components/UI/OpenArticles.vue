@@ -36,7 +36,7 @@ export default {
 <style scoped>
     section {
         width: 100%;
-        background: #B67E86;
+        background: #5C948C;
         padding-bottom: 40px;
     }
     div.arrowclear {

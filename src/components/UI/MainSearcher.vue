@@ -72,7 +72,7 @@ export default {
         display: flex;
         width: 100%;
         min-height: 30rem;
-        background: url('articles.png'), #FEEEEE;
+        background: url('articles.png'), #D8E8E8;
         background-repeat: no-repeat;
         background-size: auto 120%;
         background-position: 95% 130%;
@@ -114,7 +114,7 @@ export default {
     div.buttondiv button {
         width: 100%;
         height: 100%;
-        background-color: #783741 ;
+        background-color: #115349 ;
         cursor: pointer;
         color: white;
         transition: 0.4s;
@@ -122,14 +122,14 @@ export default {
     div.mbuttondiv button {
         width: 100%;
         height: 100%;
-        background-color: #783741 ;
+        background-color: #115349 ;
         cursor: pointer;
         color: white;
         transition: 0.4s;
     }
     div.buttondiv button:hover,
     div.mbuttondiv button:hover {
-        background-color: #B67E86;
+        background-color: #5C948C;
     }
     div.container input.mainsearch {
         width: 99%;
@@ -169,13 +169,13 @@ export default {
         display: block;
         cursor: pointer;
         transition: 0.4s;
-        color: #783741;
+        color: #115349;
         text-align: center; 
         text-shadow: 1px 1px #ddd;
     }
     a:hover {
-        color: #B67E86;
-        text-shadow: 1px 1px #783741;
+        color: #5C948C;
+        text-shadow: 1px 1px #115349;
     }
     @media(max-width:1100px) {
         div.container {

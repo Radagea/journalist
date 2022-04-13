@@ -85,7 +85,7 @@ export default {
 <style scoped>
     .dropbtn {
         cursor: pointer;
-        background: #7f444d;
+        background: #5B948B;
         color: white;
         transition: 0.3s;
         margin-top: 10px;
@@ -94,7 +94,7 @@ export default {
     }
     .dropbtn:hover,
     .dropbtn:active {
-        background: #783741;
+        background: #115349;
     }
     .dropdown {
         position: relative;

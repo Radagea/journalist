@@ -58,7 +58,7 @@ export default {
     section {
         width: 100%;
         overflow: hidden;
-        background-color: #B67E86;
+        background-color: #5C948C;
     }
     div.arrow-down {
         margin-left: 30%;
@@ -67,7 +67,7 @@ export default {
         height: 0;
         border-left: 20px solid transparent;
         border-right: 20px solid transparent;
-        border-top: 20px solid #783741;
+        border-top: 20px solid #115349;
     }
     .wrapper {
         margin-left: auto;
@@ -97,7 +97,7 @@ export default {
         margin-right: 15px;
     }
     .articletitle h2 span:hover {
-        color: #7F444D;
+        color: #40605d;
     }
 
     .articletitle h3 {
@@ -109,7 +109,7 @@ export default {
         display: inline-block;
         cursor: pointer;
         padding: 5px;
-        background-color: #783741;
+        background-color: #115349;
         border-radius: 8px;
         transition: 0.2s;
         margin-right: 15px;
@@ -162,7 +162,7 @@ export default {
     ul li {
         display: inline-block;
         cursor: pointer;
-        background-color: #783741;
+        background-color: #115349;
         padding-top: 20px;
         padding-bottom: 20px;
         padding-right: 5%;
@@ -176,10 +176,10 @@ export default {
         margin-left: 5px;
     }
     ul li:hover {
-        background-color: #9b6c73;
+        background-color: #146356;
     }
     ul li.active {
         background-color: white;
-        color: #783741;
+        color: #115349;
     }
 </style>

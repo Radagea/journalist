@@ -63,7 +63,7 @@ export default {
         height: 0;
         border-left: 50px solid transparent;
         border-right: 50px solid transparent;
-        border-top: 35px solid #FEEEEE;
+        border-top: 35px solid #D8E8E8;
     }
     div.main {
         margin-top: 10px;
@@ -103,18 +103,18 @@ export default {
         text-decoration: none;
         font-size: .9em;
         font-weight: 800;
-        color: #783741;
+        color: #115349;
         cursor: pointer;
     }
     ul li a:hover {
-        color: #B67E86;
+        color: #5C948C;
     }
 
     .listwrapper button {
         color: white;
         height: 40px;
         width: 70px;
-        background-color: #783741;
+        background-color: #115349;
         cursor: pointer;
         text-align: center;
         border-radius: 10px;
@@ -122,6 +122,6 @@ export default {
     }
 
     .listwrapper button:hover {
-        background-color: #A6737A;
+        background-color: #52857E;
     }
 </style>

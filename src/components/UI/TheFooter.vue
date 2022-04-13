@@ -14,6 +14,6 @@ footer {
     bottom: 0;
     width: 100%;
     height: 15rem;
-    background: #783741;
+    background: #115349;
 }
 </style>

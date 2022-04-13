@@ -75,11 +75,11 @@ export default {
     li {
         display: inline;
         cursor: pointer;
-        color: #783741;
+        color: #115349;
         transition: 0.2s;
     }
     li:hover {
-        color: #B67E86;
+        color: #5C948C;
     }
     li+li {
         margin-left: 10px;
@@ -119,8 +119,8 @@ export default {
     .button button {
         padding: 0.75rem 1.5rem;
         font-family: inherit;
-        background-color: #783741;
-        border: 1px solid #783741;
+        background-color: #115349;
+        border: 1px solid #115349;
         color: white;
         cursor: pointer;
         transition: 0.2s;
@@ -128,7 +128,7 @@ export default {
     }
     button:hover,
     button:active {
-    background-color: #B67E86;
-    border-color: #B67E86;
+    background-color: #5C948C;
+    border-color: #5C948C;
     }
 </style>

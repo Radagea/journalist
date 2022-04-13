@@ -72,7 +72,7 @@ export default {
         transition: 2s;
     }
     div.card:hover {
-        background: #d3bcbf;
+        background: #D8E8E8;
         box-shadow: 0 4px 10px;
     }
     div.cardline {
@@ -81,7 +81,7 @@ export default {
         height: 5px;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
-        background: #783741
+        background: #115349
     }
     div.cardlinedown {
         width: 100%;
@@ -89,7 +89,7 @@ export default {
         height: 5px;
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
-        background: #783741
+        background: #115349
     }
     div.carddescription {
         margin-left: auto;

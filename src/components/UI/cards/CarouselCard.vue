@@ -37,7 +37,7 @@ export default {
         display: inline-block;
         width: 90%;
         height: 25rem;
-        background-color: #FEEEEE;
+        background-color: #D8E8E8;
         border-radius: 30px;
     }
     .carousel-icon {
@@ -50,7 +50,7 @@ export default {
         width: 20%;
         border-top-left-radius: 30px;
         border-bottom-left-radius: 30px;
-        background-color: #B67E86;
+        background-color: #5C948C;
     }
     .carousel-main {
         float: left;
@@ -82,12 +82,12 @@ export default {
         padding: 10px;
         cursor: pointer;
         color: white;
-        background-color: #783741;
+        background-color: #115349;
         border-radius: 30px;
         transition: 0.2s;
     }
     button:hover {
-        background-color: #B67E86;
+        background-color: #5C948C;
     }
     .arrow-right {
         display: inline-block;
