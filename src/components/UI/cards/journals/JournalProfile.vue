@@ -66,13 +66,12 @@ export default {
     }
     .articles {
         width: 70%;
-        background-color: white;
         float: left;
     }
     .left {
         width: 30%;
         height: 35rem;
-        background-color: black;
+        /* background-color: black; */
         float: left;
     }
 </style>
