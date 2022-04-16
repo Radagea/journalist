@@ -7,7 +7,7 @@
       </h2>
       <div class="row">
         <div class="left">
-          <h3>Published: {{ result.published }}</h3>
+          <h3>Published: {{ result.publishedtime }}</h3>
         </div>
         <div class="right">
           <h3>Views: {{ result.views }}</h3>
