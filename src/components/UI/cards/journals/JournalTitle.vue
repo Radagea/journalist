@@ -2,27 +2,27 @@
     <header class="journalTitle">
         <div class="wrapper">
             <div class="journal">
-                <img src="/images/nophoto.jpg" alt="Journal main Picture">
-                <h1>Journal Name</h1>
+                <img :src="journalData.imgURL" alt="Journal main Picture">
+                <h1>{{ journalData.title }}</h1>
                 <div class="journalInfo">
-                    <p><span>Start date:</span> 2022-04-12</p>
-                    <p><span>Last article:</span> 2022-04-15</p>
-                    <p><span>Language:</span> English</p>
-                    <p><span>Published article:</span> 122</p>
+                    <p><span>Start date:</span> {{ journalData.startDate }}</p>
+                    <p><span>Last article:</span> {{ journalData.lastArticle }}</p>
+                    <p><span>Language:</span> {{ journalData.language }}</p>
+                    <p><span>Published article:</span> {{ journalData.articleNumber }}</p>
                 </div>
-                <a :href="'/journals/2'">Submit manuscript</a>
+                <a :href="'#'">Submit manuscript</a>
             </div>
             <div class="searcher">
                 <h2>Start date:</h2>
-                <p>2022-04-12</p>
+                <p>{{ journalData.startDate }}</p>
                 <h2 class="second">Last article:</h2>
-                <p>2022-04-15</p>
+                <p>{{ journalData.lastArticle }}</p>
             </div>
             <div class="searcher">
                 <h2>Language:</h2>
-                <p>English</p>
+                <p>{{ journalData.language }}</p>
                 <h2 class="second">Published article</h2>
-                <p>122</p>
+                <p>{{ journalData.articleNumber }}</p>
             </div>
         </div>
     </header>
@@ -30,7 +30,7 @@
 
 <script>
 export default {
-
+    props: ['journalData'],
 }
 </script>
 

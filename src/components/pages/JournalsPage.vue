@@ -5,7 +5,7 @@
               <input type="text" placeholder="You can search here..." v-model="searching">
           </div>
           <div class="wrap">
-              <div v-if="isLoading" class="lds-dual-ring"></div>
+              <the-loader v-if="isLoading"/>
               <ul class="letters">
                   <li v-for="jBl in journalsByLetters" :key="jBl.letter">
                         <h1>{{ jBl.letter }}</h1>
@@ -29,7 +29,11 @@
 </template>
 
 <script>
+import TheLoader from '../UI/elements/TheLoader.vue';
 export default {
+    components: {
+        TheLoader
+    },
     created() {
         var journals;
         fetch(this.$linkToAPI+'journals/read.php').then((response) =>{

@@ -8,7 +8,7 @@
         <div class="keywords">
             <h4>Keywords: </h4>
             <ul>
-                <li v-for="keyword in keywords" :key="keyword" @click="searchKeyword(keyword.keyword)">{{ keyword.keyword }}</li>
+                <li v-for="keyword in keywords" :key="keyword.id" @click="searchKeyword(keyword.keyword)">{{ keyword.keyword }}</li>
             </ul>
         </div>
         <div class="button">

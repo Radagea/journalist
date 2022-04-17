@@ -5,7 +5,7 @@
                 <img src="/images/nophoto.jpg" alt="Journal main Picture">
                 <h1>{{ journal }}</h1>
                 <p>Articles number: {{ articleNumber }}</p>
-                <a :href="'/journals/2'">Journal page</a>
+                <a :href="'/journals/'+journalid">Journal page</a>
             </div>
             <div class="searcher">
                 <div class="wrap">

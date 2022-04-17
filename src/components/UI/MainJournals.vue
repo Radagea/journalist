@@ -5,7 +5,8 @@
         </div>
         <div class="main">
             <h1>Explore our Journals</h1>
-            <div class="listwrapper">
+            <the-loader v-if="isLoading" />
+            <div v-else class="listwrapper">
                 <ul>
                     <li v-for="journal in journals" :key="journal.id"><a :href="'/journals/'+journal.id">{{ journal.name }}</a></li>
                 </ul>
@@ -16,7 +17,11 @@
 </template>
 
 <script>
+import TheLoader from './elements/TheLoader.vue';
 export default {
+    components: {
+        TheLoader,
+    },
     created() {
         fetch(this.$linkToAPI+'journals/read.php').then((response) => {
             if(response.ok) {
@@ -31,11 +36,13 @@ export default {
                 })
             }
             this.journals = results;
+            this.isLoading = false;
         });
     },
     data() {
         return {
             journals: [],
+            isLoading: true,
         };
     },
     methods: {

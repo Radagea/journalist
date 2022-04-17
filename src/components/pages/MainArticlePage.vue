@@ -48,7 +48,6 @@ export default {
                 journalName: data.journalName,
                 articleNumber: data.articleNumber
             }
-            console.log(this.articleData);
         });
     },
     data() {

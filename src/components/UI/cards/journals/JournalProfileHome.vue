@@ -10,7 +10,8 @@
                     <span @click="mostViewedSort" v-else>less views</span>
 
                 </h3>
-                <result-card v-for="result in searchResults" :key="result.id" :result="result" ></result-card>
+                <the-loader v-if="isLoading" />
+                <result-card v-else v-for="result in searchResults" :key="result.id" :result="result" ></result-card>
             </div>
             <div class="left">
                 <div class="emailBox clear">
@@ -26,6 +27,7 @@
 
 <script>
 import ResultCard from '../../cards/SearchingCards/ResultCard.vue';
+import TheLoader from '../../elements/TheLoader.vue';
 export default {
     created() {
         fetch(this.$linkToAPI+'articles/read_from_jid.php?jid='+this.$route.params.id).then((response) => {
@@ -33,31 +35,33 @@ export default {
             return response.json();
         }
         }).then((data) => {
-        const results = [];
-        for (const id in data) {
-            results.push({
-                id: data[id].id,
-                title:  data[id].title,
-                abstract: data[id].abstract,
-                authors: data[id].authors,
-                keywords: data[id].keywords,
-                publishedtime: data[id].publishedtime,
-                views: data[id].views,
-                type: data[id].type,
-                oa: data[id].oa,
-                journalid: data[id].journalid,
-                journalName: data[id].journalName,
-                articleNumber: data[id].articleNumber
-            })
-        }
-        this.searchResults = results;
+            const results = [];
+            for (const id in data) {
+                results.push({
+                    id: data[id].id,
+                    title:  data[id].title,
+                    abstract: data[id].abstract,
+                    authors: data[id].authors,
+                    keywords: data[id].keywords,
+                    publishedtime: data[id].publishedtime,
+                    views: data[id].views,
+                    type: data[id].type,
+                    oa: data[id].oa,
+                    journalid: data[id].journalid,
+                    journalName: data[id].journalName,
+                    articleNumber: data[id].articleNumber
+                })
+            }
+            this.searchResults = results;
+            this.isLoading = false;
         });
     },
     data() {
         return {
             searchResults: [],
             recentClicked: false,
-            viewedClicked: false
+            viewedClicked: false,
+            isLoading: true,
         };
     },
     methods: {
@@ -91,7 +95,8 @@ export default {
         }
     },
     components: {
-        ResultCard
+        ResultCard,
+        TheLoader
     }
 }
 </script>

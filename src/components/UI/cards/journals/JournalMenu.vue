@@ -4,6 +4,7 @@
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Editors</a></li>
+                <li><a href="#">Get access</a></li>
                 <li><a href="#">About</a></li>
             </ul>
         </div>
