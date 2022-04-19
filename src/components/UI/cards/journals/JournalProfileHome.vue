@@ -31,9 +31,9 @@ import TheLoader from '../../elements/TheLoader.vue';
 export default {
     created() {
         fetch(this.$linkToAPI+'articles/read_from_jid.php?jid='+this.$route.params.id).then((response) => {
-        if(response.ok) {
-            return response.json();
-        }
+            if(response.ok) {
+                return response.json();
+            }
         }).then((data) => {
             const results = [];
             for (const id in data) {

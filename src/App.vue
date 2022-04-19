@@ -7,7 +7,7 @@
       <main-header @login="LoginOpen" @register="RegisterOpen"></main-header>
     </header>
     <router-view @openArticlesPopup="ArticlesPopupOpen"></router-view>
-    <the-footer></the-footer>
+    <!-- <the-footer></the-footer> -->
   </div>
 </template>
 
@@ -17,7 +17,7 @@ import MainHeader from './components/UI/MainHeader.vue';
 import LoginPage from './components/pages/LoginPage.vue';
 import RegisterPage from './components/pages/RegisterPage.vue';
 import TheArticlePopup from './components/pages/TheArticlePopup.vue';
-import TheFooter from './components/UI/TheFooter.vue';
+// import TheFooter from './components/UI/TheFooter.vue';
 
 
 export default {
@@ -26,7 +26,7 @@ export default {
     LoginPage,
     RegisterPage,
     TheArticlePopup,
-    TheFooter
+    // TheFooter
   },
   data() {
     return {
@@ -92,9 +92,6 @@ html {
 body  {
   font-size: 14px;
 }
-#app {
-  min-height: 100vh;
-}
 .blur {
   -webkit-filter: blur(9px);
   -moz-filter: blur(9px);
@@ -104,8 +101,6 @@ body  {
 }
 .simplify {
   transition: all 0.3s;
-  position: relative;
-  min-height: 100vh;
 }
 
 .popup-enter-active {

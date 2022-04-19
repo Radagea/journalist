@@ -16,9 +16,9 @@
                 </h3>
                 <nav>
                     <ul>
-                        <li class="active">Abstract</li>
-                        <li>Full text</li>
-                        <li>Get access</li>
+                        <li :class="activeMenu == 1 ? 'active' : '' " @click="emitMenuData(1)">Abstract</li>
+                        <li :class="activeMenu == 2 ? 'active' : '' " @click="emitMenuData(2)">Full text</li>
+                        <li :class="activeMenu == 3 ? 'active' : '' " @click="emitMenuData(3)">Get access</li>
                     </ul>
                 </nav>
             </div>
@@ -37,6 +37,11 @@
 <script>
 export default {
     props: ['articleData'],
+    data(){
+        return {
+            activeMenu: 1,
+        };
+    },
     methods: {
         searchAuthor(authors) {
             const authorName = authors.firstName+" "+authors.lastName;
@@ -49,8 +54,13 @@ export default {
                 query: {keywords: keyword.keyword}
             });
 
+        },
+        emitMenuData(menuID) {
+            this.activeMenu = menuID;
+            this.$emit('menuID',menuID);
         }
-    }
+    },
+    emits: ["menuID"]
 }
 </script>
 
