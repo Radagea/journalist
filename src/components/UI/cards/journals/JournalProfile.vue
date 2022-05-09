@@ -10,6 +10,7 @@ import JournalMenu from './JournalMenu.vue';
 import JournalProfileHome from './JournalProfileHome.vue';
 
 export default {
+    emits: ["openArticlesPopup"],
     created() {
         fetch(this.$linkToAPI+'journals/read_one.php?id='+this.$route.params.id).then((response) => {
             if(response.ok) {
@@ -26,7 +27,6 @@ export default {
                 imgURL: data.imgUrl,
                 articleNumber: data.articleNumber
             }
-            console.log(this.journalData);
         });
     },
     components: {

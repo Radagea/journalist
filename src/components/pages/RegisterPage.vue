@@ -9,30 +9,22 @@
                     </slot>
                 </header>
                 <section>
-                    <form @submit.prevent="loginMeth">
-                        <div class="form-control">
-                            <label for="username">Username:</label>
-                            <input id="username" name="username" type="text">    
-                        </div>
-                        <div class="form-control">
-                            <label for="fname">First name:</label>
-                            <input id="fname" name="fname" type="text">    
-                        </div>
-                        <div class="form-control">
-                            <label for="lname">Last name:</label>
-                            <input id="lname" name="lname" type="text">    
-                        </div>
+                    <the-loader v-if="isLoading"></the-loader>
+                    <form @submit.prevent="registerMeth" v-else>
                         <div class="form-control">
                             <label for="email">E-mail:</label>
-                            <input id="email" name="email" type="email">    
+                            <input id="email" name="email" type="email" v-model.trim="email" :class="{error : !emailIsValid}">    
                         </div>
                         <div class="form-control">
                             <label for="password">Password:</label>
-                            <input id="password" name="password" type="password">    
+                            <input id="password" name="password" type="password" v-model.trim="password" :class="{error : !passwordIsValid}">    
                         </div>
                         <div class="form-control">
                             <label for="cpassword">Confirm Password:</label>
-                            <input id="cpassword" name="cpassword" type="password">    
+                            <input id="cpassword" name="cpassword" type="password" v-model.trim="ConfPassword" :class="{error : !passwordIsSame}">    
+                        </div>
+                        <div class="form-control" v-if="!formIsValid">
+                          <p v-for="message in errorMessage" :key="message" class="error">{{ message }}</p>
                         </div>
                         <div>
                             <button type="submit">Register</button>
@@ -51,10 +43,75 @@ export default {
     props: ['open'],
     data() {
       return {
+        email: '',
+        emailIsValid: true,
+        password: '',
+        passwordIsValid: true,
+        ConfPassword: '',
+        passwordIsSame: true,
+        formIsValid: true,
+        errorMessage: [],
+        isLoading: false,
       };
     },
     methods: {
+      async registerMeth() {
+        this.isLoading = true;
+        this.validateForm();
 
+        if (this.formIsValid) {
+          
+          const url = this.$store.getters['api/authLink']+'register.php';
+          const response = await fetch(url, {
+            method: 'POST',
+            body: JSON.stringify({
+              mode: "register",
+              email: this.email,
+              password: this.password
+            })
+          });
+
+          const responseData = await response.json();
+
+          if (!response.ok) {
+            const error = new Error(responseData.message || 'Failed to authenticate');
+            throw error;
+          }
+
+          if (responseData.message === 'Register OK!') {
+            console.log('Okés');
+          } else {
+            this.formIsValid = false;
+            this.errorMessage.push('You are already registered with this email');
+          }
+          
+          this.isLoading = false;
+        }
+
+      },
+      validateForm() {
+        this.emailIsValid = true;
+        this.passwordIsValid = true;
+        this.passwordIsSame = true;
+        this.formIsValid = true;
+        this.errorMessage = [];
+
+        if (this.email === '' || !this.email.includes('@')) {
+          this.emailIsValid = false;
+          this.formIsValid = false;
+          this.errorMessage.push('This is not a valid email address');
+        }
+        if (!(this.password.length > 5 )) {
+          this.passwordIsValid = false;
+          this.formIsValid = false;
+          this.errorMessage.push('The password at least have to 6 character long');
+        }
+        if (!(this.ConfPassword === this.password) || (this.confPassword === '')) {
+          this.passwordIsSame = false;
+          this.formIsValid = false;
+          this.errorMessage.push('The two password is not the same!');
+        }
+      }
     }
 }
 </script>
@@ -109,6 +166,9 @@ menu {
   justify-content: flex-end;
   margin: 0;
 }
+p.error {
+  color: red;
+}
 div.forgot {
         width:100%;
         height: 100%;
@@ -128,6 +188,10 @@ div.forgot {
     font: inherit;
     padding: 0.15rem;
     border: 1px solid #ccc;
+    }
+
+    input.error {
+      border: 1px solid red;
     }
 
     input:focus {

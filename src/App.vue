@@ -25,7 +25,7 @@ export default {
     MainHeader,
     LoginPage,
     RegisterPage,
-    TheArticlePopup,
+    TheArticlePopup
     // TheFooter
   },
   data() {

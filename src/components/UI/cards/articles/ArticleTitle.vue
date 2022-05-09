@@ -19,6 +19,7 @@
                         <li :class="activeMenu == 1 ? 'active' : '' " @click="emitMenuData(1)">Abstract</li>
                         <li :class="activeMenu == 2 ? 'active' : '' " @click="emitMenuData(2)">Full text</li>
                         <li :class="activeMenu == 3 ? 'active' : '' " @click="emitMenuData(3)">Get access</li>
+                        <li :class="activeMenu == 4 ? 'active' : '' " @click="emitMenuData(4)">References</li>
                     </ul>
                 </nav>
             </div>

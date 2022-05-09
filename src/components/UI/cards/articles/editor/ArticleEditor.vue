@@ -5,7 +5,6 @@
             <div class="editor" contentEditable="true" @input="thisText" v-html="thisText">
             </div>
             <div>
-                {{ getText }}
             </div>
         </div>
     </section>

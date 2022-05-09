@@ -1,18 +1,22 @@
 <template>
     <section class="fo">
-        <div class="wrapper clear">
-            <!-- <a @click="goto('add')">KLIKK ME</a> -->
-            <div class="foo" v-html="fulltext.content">
+        <div class="wrapper clear" v-if="openAccess != 0">
+            <div class="foo"  v-html="fulltext.content">
             </div>
             <div class="menu">
                 <a v-for="section in fulltext.sections" :key="section.id" @click="goto(section.id)">{{ section.name }}</a>
             </div>
+        </div>
+        <div class="wrapper clear noAccess" v-else>
+            <h1>You don't have access to read this article</h1>
+            <p>Go to the <a>'Get access'</a> page for futher information</p>
         </div>
     </section>
 </template>
 
 <script>
 export default {
+    props: ["openAccess"],
     created() {
         fetch(this.$linkToAPI+'articles/getFulltextHTML.php').then((response) => {
             if(response.ok) {
@@ -82,8 +86,6 @@ export default {
         background-color: #5C948C;
     }
 
-
-
     .foo /deep/ {
         text-align: justify
     }
@@ -106,4 +108,10 @@ export default {
         line-height: 1.5em;
         margin-bottom: 20px;
     }
+
+    .noAccess {
+        text-align: center;
+        font-size: 1.5em;
+    }
+
 </style>

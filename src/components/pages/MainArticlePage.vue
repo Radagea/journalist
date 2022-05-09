@@ -2,7 +2,7 @@
     <journal-in-article :journal="articleData.journalName" :journalid="articleData.journalid" :articleNumber="articleData.articleNumber"></journal-in-article>
     <article-title :articleData="articleData" @menuID="setActiveMenu"></article-title>
     <article-abstract v-if="activeMenu == 1" :abstract="articleData.abstract"></article-abstract>
-    <article-fulltext v-if="activeMenu == 2"></article-fulltext>
+    <article-fulltext :openAccess="articleData.oa" v-if="activeMenu == 2"></article-fulltext>
     <article-editor v-if="activeMenu == 3"></article-editor>
 </template>
 

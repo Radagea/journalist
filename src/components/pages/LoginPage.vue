@@ -9,8 +9,8 @@
                 <section>
                     <form @submit.prevent="loginMeth" v-if="!pwdisForgetted">
                         <div class="form-control">
-                            <label for="username">Username:</label>
-                            <input id="username" name="username" type="text">    
+                            <label for="email">E-mail:</label>
+                            <input id="email" name="email" type="email">    
                         </div>
                         <div class="form-control">
                             <label for="password">Password:</label>
