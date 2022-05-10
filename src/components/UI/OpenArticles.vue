@@ -5,7 +5,7 @@
         </div>
         <div class="maincards">
             <div class="title"><h1>Open Access:</h1></div>
-            <open-articles-cards @open="openArticlePopup"></open-articles-cards>
+            <open-articles-cards></open-articles-cards>
             <div class="link">
                 <a @click="navigateInto">All Open Access</a>
             </div>
@@ -18,14 +18,10 @@ import OpenArticlesCards from './cards/OpenArticlesCards.vue';
 
 
 export default {
-    emits: ['openArticlePopup'],
     components: {
         OpenArticlesCards,
     },
     methods: {
-        openArticlePopup(e) {
-            this.$emit('openArticlePopup',e)
-        },
         navigateInto() {
             this.$router.push({name: 'Searching', query: {oac: true}});
         }

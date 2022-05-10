@@ -7,17 +7,21 @@
                     <h2>Login</h2>
                 </header>
                 <section>
-                    <form @submit.prevent="loginMeth" v-if="!pwdisForgetted">
+                    <the-loader v-if="isLoading"></the-loader>
+                    <form @submit.prevent="loginMeth" v-else-if="!pwdisForgetted">
                         <div class="form-control">
                             <label for="email">E-mail:</label>
-                            <input id="email" name="email" type="email">    
+                            <input id="email" name="email" type="email" v-model.trim="email" :class="{error: !emailIsValid}">    
                         </div>
                         <div class="form-control">
                             <label for="password">Password:</label>
-                            <input id="password" name="password" type="password">    
+                            <input id="password" name="password" type="password" v-model.trim="password" :class="{error: !passwordIsValid}">    
                         </div>
                         <div class="forgot">
                             <a @click="iForgetpwd">Forgot password?</a>
+                        </div>
+                        <div class="form-control" v-if="!formIsValid">
+                            <p v-for="message in errorMessage" :key="message" class="error">{{ message }}</p>
                         </div>
                         <div>
                             <button type="submit">Login</button>
@@ -49,6 +53,13 @@ export default {
     data() {
       return {
         pwdisForgetted: false,
+        emailIsValid: true,
+        email: '',
+        passwordIsValid: true,
+        password: '',
+        formIsValid: true,
+        errorMessage: [],
+        isLoading: false
       };
     },
     methods: {
@@ -56,8 +67,53 @@ export default {
         this.pwdisForgetted = !this.pwdisForgetted;
       },
       pwdResender() {
-
         this.iForgetpwd();
+      },
+      async loginMeth() {
+        this.isLoading = true;
+        this.validateForm();
+
+        if (this.formIsValid) {
+          const url = this.$store.getters['api/registLink'];
+          const response = await fetch(url, {
+            method: 'POST',
+            body: JSON.stringify({
+              mode: "login",
+              email: this.email,
+              password: this.password
+            })
+          });
+
+          const responseData = await response.json();
+
+          if (responseData.message === 'Login OK!') {
+            // console.log('Login ok!');
+            this.$store.dispatch('auth/login',responseData);
+            // this.$store.getters['auth/getUser'];
+            this.$router.push({name: 'MyProfile'});
+            this.$emit('close');
+          } else {
+            this.formIsValid = false;
+            this.errorMessage.push('Incorrect password or email address'); 
+          }
+        }
+        this.isLoading = false;
+      },
+      validateForm() {
+        this.emailIsValid = true;
+        this.passwordIsValid = true;
+        this.formIsValid = true;
+        this.errorMessage = [];
+        if (this.email === '' || !this.email.includes('@')) {
+          this.emailIsValid = false;
+          this.formIsValid = false;
+          this.errorMessage.push('This is not a valid email address');
+        }
+        if (!(this.password.length > 5)) {
+          this.passwordIsValid = false;
+          this.formIsValid = false;
+          this.errorMessage.push('This is not a valid password!');
+        }
       }
     }
 }
@@ -107,6 +163,10 @@ section {
   padding: 1rem;
 }
 
+p.error {
+  color: red;
+}
+
 div.forgot {
         width:100%;
         height: 100%;
@@ -126,6 +186,10 @@ div.forgot {
     font: inherit;
     padding: 0.15rem;
     border: 1px solid #ccc;
+    }
+
+    input.error {
+      border: 1px solid red;
     }
 
     input:focus {

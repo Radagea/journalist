@@ -1,7 +1,7 @@
 <template>
   <main-searcher></main-searcher>
   <main-journals></main-journals>
-  <open-articles @openArticlePopup="openArticlePopup"></open-articles>
+  <open-articles></open-articles>
   <main-subjects></main-subjects>
   <recent-articles></recent-articles>
 </template>
@@ -13,18 +13,12 @@ import OpenArticles from '../UI/OpenArticles.vue';
 import RecentArticles from '../UI/RecentArticles.vue';
 import MainJournals from '../UI/MainJournals.vue';
 export default {
-    emits: ['openArticlesPopup'],
     components: {
         MainSearcher,
         MainSubjects,
         OpenArticles,
         MainJournals,
         RecentArticles 
-    },
-    methods: {
-      openArticlePopup(e) {
-        this.$emit('openArticlesPopup',e);
-      }
     }
 }
 </script>

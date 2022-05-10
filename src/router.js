@@ -6,7 +6,8 @@ import MainPage from './components/pages/MainPage.vue';
 import SearchingPage from './components/pages/SearchingPage.vue';
 import MainArticlePage from './components/pages/MainArticlePage.vue';
 import JournalsPage from './components/pages/JournalsPage.vue';
-import JournalProfile from './components/UI/cards/journals/JournalProfile.vue'
+import JournalProfile from './components/UI/cards/journals/JournalProfile.vue';
+import UserProfile from './components/pages/UserProfile.vue';
 
 
 
@@ -19,6 +20,7 @@ const router = createRouter({
         {name: 'ArticlePage', path: '/article/:id', component: MainArticlePage},
         {name: 'Journals', path: '/journals', component: JournalsPage,},
         {name: 'JournalProfile', path: '/journals/:id', component: JournalProfile},
+        {name: 'MyProfile', path: '/myprofile', component: UserProfile },
         {path: '/:notFound(.*)', component: NotFound}
     ],
     linkActiveClass: 'active',
@@ -27,4 +29,7 @@ const router = createRouter({
     }
 });
 
+// router.beforeEach(function(to,_,next) { //Navigation guard!
+
+// })
 export default router;

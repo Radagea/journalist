@@ -2,11 +2,11 @@
   <div :class="[anypopup ? 'blur' : '']" class="simplify">
     <login-page :open="isLoginPopup" @close="LoginClose"></login-page>
     <register-page :open="isRegisterPopup" @close="RegisterClose"></register-page>
-    <the-article-popup :open="isArticlePopup" @close="ArticlesPopupClose" :articleData="articlePopupID"></the-article-popup>
+    <the-article-popup :open="isArticlePopup" :articleData="articlePopupID"></the-article-popup>
     <header>
       <main-header @login="LoginOpen" @register="RegisterOpen"></main-header>
     </header>
-    <router-view @openArticlesPopup="ArticlesPopupOpen"></router-view>
+    <router-view></router-view>
     <!-- <the-footer></the-footer> -->
   </div>
 </template>
@@ -21,6 +21,9 @@ import TheArticlePopup from './components/pages/TheArticlePopup.vue';
 
 
 export default {
+  created() {
+    this.$store.dispatch('auth/tryLogin');
+  },
   components: {
     MainHeader,
     LoginPage,
@@ -67,6 +70,23 @@ export default {
     popupMode() {
       this.anypopup = !this.anypopup;
     }
+  },
+  computed: {
+    checkPopup() {
+      return this.$store.getters['openArticlePopup/isPopUp'];
+    },
+    getPopupId() {
+      return this.$store.getters['openArticlePopup/getId'];
+    }
+  },
+  watch: {
+    checkPopup() {
+      if (this.checkPopup === true) {
+        this.ArticlesPopupOpen(this.getPopupId);
+      } else if(this.checkPopup === false) {
+        this.ArticlesPopupClose();
+      }
+    }
   }
 }
 </script>
@@ -75,7 +95,7 @@ export default {
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css");
 @import url('https://fonts.googleapis.com/css2?family=Volkhov:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 *{
-    font-family: 'Volkhov', serif;
+    font-family: 'Arial';
     margin: 0;
     padding: 0;
     border: 0;

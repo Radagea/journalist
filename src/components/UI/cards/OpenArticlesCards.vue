@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div @click="$emit('open',randoms)" class="card" v-for="randoms in RandomOpenAccess" :key="randoms.id">
+        <div @click="openPopUp(randoms)" class="card" v-for="randoms in RandomOpenAccess" :key="randoms.id">
             <h1>{{ randoms.journalName}}</h1>
             <div class="cardline"></div>
             <div class="cardimage">
@@ -16,7 +16,6 @@
 
 <script>
 export default {
-    emits: ['open'],
     created() {
         fetch(this.$linkToAPI+'articles/oarandomread.php').then((response)=>{
             if (response.ok) {
@@ -45,6 +44,11 @@ export default {
         return {
             RandomOpenAccess: []
         };
+    },
+    methods: {
+        openPopUp(data) {
+            this.$store.dispatch('openArticlePopup/openPopUp',data)
+        }
     }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <teleport to="body">
-    <div class="homaly" @click="$emit('close')" v-if="open"></div>
+    <div class="homaly" @click="closeThisPopup" v-if="open"></div>
     <transition name="popup">
       <dialog open v-if="open">
         <header>
@@ -9,8 +9,8 @@
           </div>
         </header>
         <section>
-          <article-authors :authors="articleData.authors" @close="$emit('close')"></article-authors>
-          <the-abstract :articleid="articleData.id" :abstract="articleData.abstract" :keywords="articleData.keywords" :views="articleData.views" @close="$emit('close')"></the-abstract>
+          <article-authors :authors="articleData.authors" @close="closeThisPopup"></article-authors>
+          <the-abstract :articleid="articleData.id" :abstract="articleData.abstract" :keywords="articleData.keywords" :views="articleData.views" @close="closeThisPopup"></the-abstract>
         </section>
       </dialog>
     </transition>
@@ -26,7 +26,11 @@ export default {
     ArticleAuthors,
     TheAbstract,
   },
-  emits: ["close"],
+  methods: {
+    closeThisPopup() {
+      this.$store.dispatch('openArticlePopup/closePopUp');
+    }
+  },
   props: ["open","articleData"]
 };
 </script>

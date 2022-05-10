@@ -17,6 +17,9 @@ export default {
         },
         authLink(state) {
             return state.apiLink+'/auth/';
+        },
+        registLink(state) {
+            return state.apiLink+'/auth/register.php'
         }
     }
 }

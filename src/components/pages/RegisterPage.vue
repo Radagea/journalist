@@ -10,6 +10,10 @@
                 </header>
                 <section>
                     <the-loader v-if="isLoading"></the-loader>
+                    <div class="form-control success" v-else-if="registerIsOk">
+                      <h1>Registration successful</h1>
+                      <p>An email was sent to let you validate your registration.</p>
+                    </div>
                     <form @submit.prevent="registerMeth" v-else>
                         <div class="form-control">
                             <label for="email">E-mail:</label>
@@ -52,6 +56,7 @@ export default {
         formIsValid: true,
         errorMessage: [],
         isLoading: false,
+        registerIsOk: false,
       };
     },
     methods: {
@@ -73,20 +78,16 @@ export default {
 
           const responseData = await response.json();
 
-          if (!response.ok) {
-            const error = new Error(responseData.message || 'Failed to authenticate');
-            throw error;
-          }
-
           if (responseData.message === 'Register OK!') {
-            console.log('Okés');
+            this.registerIsOk = true;
           } else {
             this.formIsValid = false;
-            this.errorMessage.push('You are already registered with this email');
+            this.errorMessage.push('Someone has already registered with this email');
           }
           
-          this.isLoading = false;
+          
         }
+        this.isLoading = false;
 
       },
       validateForm() {
@@ -104,12 +105,12 @@ export default {
         if (!(this.password.length > 5 )) {
           this.passwordIsValid = false;
           this.formIsValid = false;
-          this.errorMessage.push('The password at least have to 6 character long');
+          this.errorMessage.push('The password must contain at least 6 characters');
         }
         if (!(this.ConfPassword === this.password) || (this.confPassword === '')) {
           this.passwordIsSame = false;
           this.formIsValid = false;
-          this.errorMessage.push('The two password is not the same!');
+          this.errorMessage.push('Passwords do not match');
         }
       }
     }
@@ -168,6 +169,9 @@ menu {
 }
 p.error {
   color: red;
+}
+div.success {
+  text-align: center;
 }
 div.forgot {
         width:100%;
