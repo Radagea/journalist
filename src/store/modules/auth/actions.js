@@ -13,7 +13,6 @@ export default {
 
 
         if(expiresIn < 0) {
-            console.log('Login not success');
             return;
         }
 
@@ -24,5 +23,13 @@ export default {
             })
         }
 
+    },
+    logOut(context) {
+        localStorage.removeItem('token');
+        localStorage.removeItem('expiresAt');
+        context.commit('setUser', {
+            token: null,
+            expiresAt: null
+        })
     }
 }

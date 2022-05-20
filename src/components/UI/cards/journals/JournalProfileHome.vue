@@ -13,14 +13,7 @@
                 <the-loader v-if="isLoading" />
                 <result-card v-else v-for="result in searchResults" :key="result.id" :result="result" ></result-card>
             </div>
-            <div class="left">
-                <div class="emailBox clear">
-                    <h2>E-mail alert</h2>
-                    <p>Add your e-mail address to receive alert if new article published:</p>
-                    <input type="email" id="email" name="email"/>
-                    <button>Subscribe</button>
-                </div>
-            </div>
+            <email-box></email-box>
         </div>
     </section>
 </template>
@@ -28,6 +21,7 @@
 <script>
 import ResultCard from '../../cards/SearchingCards/ResultCard.vue';
 import TheLoader from '../../elements/TheLoader.vue';
+import emailBox from './elements/emailBox.vue';
 export default {
     created() {
         fetch(this.$linkToAPI+'articles/read_from_jid.php?jid='+this.$route.params.id).then((response) => {
@@ -96,7 +90,8 @@ export default {
     },
     components: {
         ResultCard,
-        TheLoader
+        TheLoader,
+        emailBox
     }
 }
 </script>
@@ -124,38 +119,5 @@ export default {
         font-weight: 200;
         margin-left: 25px;
         cursor: pointer;
-    }
-    .left {
-        width: 28%;
-        /* background-color: black; */
-        float: right;
-    }
-    .emailBox {
-        padding: 4%;
-        background-color: white;
-        border-radius: 10px;
-    }
-    .emailBox h2 {
-        margin-bottom: 6px;
-    }
-    .emailBox input {
-        width: 96%;
-        padding: 2%;
-        margin-top: 10px;
-        border: 1px solid lightgray;
-        border-radius: 5px;
-    }
-    .emailBox button {
-        float: right;
-        cursor: pointer;
-        padding: 8px;
-        margin-top: 10px;
-        border-radius: 5px;
-        color:white;
-        background-color: #115349;
-        transition: 0.2s;
-    }
-    .emailBox button:hover {
-        background-color: #5C948C;
     }
 </style>

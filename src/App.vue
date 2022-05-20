@@ -153,4 +153,22 @@ body  {
     transform: translateY(-50px) scale(0.5);
   }
 }
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f9f9f9; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #5C948C; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #115349; 
+}
 </style>

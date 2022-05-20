@@ -90,7 +90,7 @@ export default {
             // console.log('Login ok!');
             this.$store.dispatch('auth/login',responseData);
             // this.$store.getters['auth/getUser'];
-            this.$router.push({name: 'MyProfile'});
+            // this.$router.push({name: 'MyProfile'});
             this.$emit('close');
           } else {
             this.formIsValid = false;

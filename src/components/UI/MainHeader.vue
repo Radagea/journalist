@@ -16,8 +16,10 @@
 						<li><a href="">almenupont 4</a></li>
 					</ul>
 				</li> -->
-				<li class="login"><a @click="$emit('login')">Login</a></li>
-				<li><a @click="$emit('register')">Register</a></li>
+				<li v-if="isLoggedIn"><router-link to="/myprofile">My Profile</router-link></li>
+				<li class="login" v-if="!isLoggedIn"><a @click="$emit('login')">Login</a></li>
+				<li v-if="!isLoggedIn"><a @click="$emit('register')">Register</a></li>
+				<li v-else><a @click="logOut">Logout</a></li>
 			</ul>
 		</div>
 	</div>
@@ -38,6 +40,17 @@ export default {
 		},
 		subMenusLeave() {
 			this.subMenuClicked = false;
+		},
+		logOut() {
+			this.$store.dispatch('auth/logOut');
+			if (this.$route.meta.requiresAuth) {
+				this.$router.replace('/');
+			}
+		}
+	},
+	computed: {
+		isLoggedIn() {
+			return this.$store.getters['auth/isAuthenticated'];
 		}
 	}
 }
