@@ -74,8 +74,8 @@ export default {
         min-height: 30rem;
         background: url('articles.png'), #D8E8E8;
         background-repeat: no-repeat;
-        background-size: auto 120%;
-        background-position: 95% 130%;
+        background-size: auto 95%;
+        background-position: 95% 50%;
     }
     div.container {
         float: left;

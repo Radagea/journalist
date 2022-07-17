@@ -4,7 +4,7 @@
             <nav>
                 <ul>
                     <li>
-                        <router-link to="/myprofile">Personal data</router-link>
+                        <router-link to="/myprofile/personalData">Personal data</router-link>
                     </li>
                     <li>
                         <router-link to="/myprofile/modpassword">Password modification</router-link>
@@ -18,6 +18,9 @@
                     <li>
                         <router-link to="/myprofile/PublishedManuscripts" >Published manuscripts</router-link>
                     </li>
+                    <li class="submitManuscript">
+                        <router-link to="/myprofile/SubmitManuscript" >Submit manuscripts</router-link>
+                    </li>
                 </ul>
             </nav>
             <div class="main">
@@ -29,7 +32,11 @@
 
 <script>
 export default {
+    data() {
+        return {
 
+        };
+    }
 }
 </script>
 
@@ -66,36 +73,51 @@ div.main {
 }
 
 ul {
-    width: 100%;
     text-align: center;
     list-style: none;
+    height: 100%;
+    position: relative;
 }
 ul li {
     transition: 0.2s;
 }
-ul li:first-child {
+ul li:first-child a{
     border-top-left-radius: 10px;
 }
+ul li.submitManuscript {
+    bottom: 0;
+    position: absolute;
+    width: calc(100%);
+    background: #115349;
+    border-bottom-left-radius: 10px;
+}
+ul li.submitManuscript a {
+    color: white;
+}
+
 ul li a {
     display: block;
     text-decoration: none;
     color: #115349;
     font-size: 1.1em;
     font-weight: 700;
-    width: 100%;
     padding: 10px;
     transition: 0.2s;
 }
 
-ul li:hover {
+ul li a:hover,
+ul li a.active {
     background: #115349;
+    color: white;
 }
+ul li:last-child:hover a{
+    border-bottom-left-radius: 10px;
+}
+
 ul li:first-child:hover {
     border-top-left-radius: 10px;
 }
-ul li:hover a {
-    color: white;
-}
+
 
 ::-webkit-scrollbar {
   width: 10px;

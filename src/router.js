@@ -14,6 +14,7 @@ import PasswordModification from './components/UI/UserProfile/PasswordModificati
 import PersonalData from './components/UI/UserProfile/PersonalData.vue';
 import SavedArticles from './components/UI/UserProfile/SavedArticles.vue';
 import PublishedManuscripts from './components/UI/UserProfile/PublishedManuscripts.vue';
+import SubmitManuscript from './components/UI/UserProfile/SubmitManuscript.vue';
 
 
 import store from './store/index.js';
@@ -35,6 +36,10 @@ const router = createRouter({
             children: [
                 {
                     path: '',
+                    redirect: '/myprofile/personalData'
+                },
+                {
+                    path: 'personalData',
                     component: PersonalData
                 },
                 {
@@ -52,6 +57,10 @@ const router = createRouter({
                 {
                     path: 'PublishedManuscripts',
                     component: PublishedManuscripts
+                },
+                {
+                    path: 'SubmitManuscript',
+                    component: SubmitManuscript
                 }
             ]
         },

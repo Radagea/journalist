@@ -2,7 +2,7 @@ export default {
     namespaced: true,
     state() {
         return {
-            apiLink: 'http://develop.majsys.hu/journalistapi'
+            apiLink: 'http://172.21.248.248:8081/'
         };
     },
     mutations: {
@@ -13,16 +13,16 @@ export default {
     },
     getters: {
         apiLink(state) {
-            return state.apiLink+'/api/';
+            return state.apiLink+'api/';
         },
         authLink(state) {
-            return state.apiLink+'/auth/';
+            return state.apiLink+'auth/';
         },
         registLink(state) {
-            return state.apiLink+'/auth/register.php'
+            return state.apiLink+'auth/register.php'
         },
         userDataLink(state,_,_1,rootGetters) {
-            return state.apiLink+'/auth/getUserData.php'+'?token='+rootGetters['auth/getToken'];
+            return state.apiLink+'auth/getUserData.php'+'?token='+rootGetters['auth/getToken'];
         }
     }
 }

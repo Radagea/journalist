@@ -7,6 +7,7 @@ import TheLoader from './components/UI/elements/TheLoader.vue';
 const app = createApp(App);
 const apilink = 'http://develop.majsys.hu/journalistapi/api/';
 
+
 app.config.globalProperties.$userToken = null;
 app.config.globalProperties.$linkToAPI = apilink;
 
